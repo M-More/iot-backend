@@ -11,6 +11,6 @@ public class DeviceController {
 
     @GetMapping(value ="/getDevice")
     public String getDevice(){
-        return "device3";
+        return "device5";
     }
 }
