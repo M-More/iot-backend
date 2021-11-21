@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.iotplatform.mapper.AlarmMapper">
+    <select id="getAllAlarm" resultType="com.it.iotplatform.model.Alarm">
+        select *
+        from alarm
+    </select>
+    <select id="findAlarmByCondition" resultType="com.it.iotplatform.model.Alarm">
+        select *
+        from alarm
+        where (alarmLevel = #{alarmLevel}
+            and alarmName like CONCAT(#{alarmName},'%'))
+        or (alarmLevel = #{alarmLevel}
+            and alarmCode like CONCAT(#{alarmCode},'%'));
+    </select>
+    <insert id="insertAlarm" parameterType="com.it.iotplatform.model.Alarm">
+        insert into alarm(alarmName,alarmCode,alarmLevel,deviceTypeName,status,ruleDescription)
+        value (
+            #{alarmName},
+            #{alarmCode},
+            #{alarmLevel},
+            #{deviceTypeName},
+            #{status},
+            #{ruleDescription}
+        );
+    </insert>
+    <update id="updateAlarm" parameterType="com.it.iotplatform.model.Alarm">
+        update alarm
+        set alarmName = #{alarmName},
+            alarmLevel = #{alarmLevel},
+            deviceTypeName = #{deviceTypeName},
+            status = #{status},
+            ruleDescription = #{ruleDescription}
+        where alarmCode = #{alarmCode};
+    </update>
+    <delete id="deleteAlarm" parameterType="com.it.iotplatform.model.Alarm">
+        delete
+        from alarm
+        where alarmCode = #{alarmCode};
+    </delete>
+</mapper>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.iotplatform.mapper.SupplierMapper">
+    <select id="getAllSupplier" resultType="com.it.iotplatform.model.Supplier">
+        select *
+        from supplier
+    </select>
+    <select id="findSupplierByNameOrCode" resultType="com.it.iotplatform.model.Supplier">
+        select *
+        from supplier
+        where supplierName like CONCAT(#{supplierName},'%')
+        or supplierCode like CONCAT(#{supplierCode},'%')
+    </select>
+    <insert id="insertSupplier" parameterType="com.it.iotplatform.model.Supplier">
+        insert into supplier(supplierName,supplierCode,contactTel,contactName,address,note)
+        value (
+            #{supplierName},
+            #{supplierCode},
+            #{contactTel},
+            #{contactName},
+            #{address},
+            #{note}
+        );
+    </insert>
+    <update id="updateSupplier" parameterType="com.it.iotplatform.model.Supplier">
+        update supplier
+        set supplierName = #{supplierName},
+            contactTel = #{contactTel},
+            contactName = #{contactName},
+            address = #{address},
+            note = #{note}
+        where supplierCode = #{supplierCode};
+    </update>
+    <delete id="deleteSupplier" parameterType="com.it.iotplatform.model.Supplier">
+        delete
+        from supplier
+        where supplierCode = #{supplierCode}
+    </delete>
+</mapper>
