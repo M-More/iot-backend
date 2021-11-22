@@ -1,19 +1,18 @@
 package com.it.iotplatform.model;
-
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
-public class DeviceInfo {
+@Getter
+@Setter
+public class DeviceInfo extends BaseModel{
     @NonNull private String deviceSort;
     @NonNull private String deviceBrand;
     @NonNull private String deviceTypeName;
-    @NonNull private String deviceModel;
+    private String deviceModel;
     @NonNull private String deviceNumber;
     @NonNull private String installDate;
     @NonNull private String longitude;
     @NonNull private String latitude;
-    @NonNull private String installAddress;
+    private String installAddress;
 }

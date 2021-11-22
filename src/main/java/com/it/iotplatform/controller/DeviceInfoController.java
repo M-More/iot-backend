@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/deviceInfo")
 public class DeviceInfoController {
     private final DeviceInfoService deviceInfoService;
 
@@ -18,22 +18,22 @@ public class DeviceInfoController {
     }
 
     @PostMapping(value ="/addDeviceInfo")
-    public Response<DeviceInfo> addDeviceInfo(DeviceInfo user){
-        return deviceInfoService.addDeviceInfo(user);
+    public Response<DeviceInfo> addDeviceInfo(DeviceInfo deviceInfo){
+        return deviceInfoService.addDeviceInfo(deviceInfo);
     }
 
     @PostMapping(value ="/deleteDeviceInfo")
-    public Response<DeviceInfo> deleteDeviceInfo(String id){
-        return deviceInfoService.deleteDeviceInfo(id);
+    public Response<DeviceInfo> deleteDeviceInfo(String deviceNumber){
+        return deviceInfoService.deleteDeviceInfo(deviceNumber);
     }
 
     @PostMapping(value ="/modifyDeviceInfo")
-    public Response<DeviceInfo> modifyDeviceInfo(DeviceInfo user){
-        return deviceInfoService.modifyDeviceInfo(user);
+    public Response<DeviceInfo> modifyDeviceInfo(DeviceInfo deviceInfo){
+        return deviceInfoService.modifyDeviceInfo(deviceInfo);
     }
 
     @GetMapping(value ="/getDeviceInfo")
-    public Response<DeviceInfo> getDeviceInfo(String id){
-        return deviceInfoService.getDeviceInfo(id);
+    public Response<DeviceInfo> getDeviceInfo(String deviceNumber){
+        return deviceInfoService.getDeviceInfo(deviceNumber);
     }
 }

@@ -5,7 +5,11 @@ import com.it.iotplatform.response.Response;
 import com.it.iotplatform.service.DeviceTypeService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+@RestController
+@RequestMapping("/deviceType")
 public class DeviceTypeController {
     private final DeviceTypeService deviceTypeService;
 
@@ -24,8 +28,8 @@ public class DeviceTypeController {
     }
 
     @PostMapping(value ="/modifyDeviceType")
-    public Response<DeviceType> modifyDeviceType(DeviceType user){
-        return deviceTypeService.modifyDeviceType(user);
+    public Response<DeviceType> modifyDeviceType(DeviceType deviceType){
+        return deviceTypeService.modifyDeviceType(deviceType);
     }
 
     @GetMapping(value ="/getDeviceType")

@@ -107,6 +107,7 @@ public class DeviceTypeServiceImpl implements DeviceTypeService {
             return new Response<>(DeviceTypeServiceImpl.ResponseEnum.GET_SUCCESS.code, DeviceTypeServiceImpl.ResponseEnum.GET_SUCCESS.message, deviceType);
         }
         catch (Exception e) {
+            e.printStackTrace();
             return new Response<>(DeviceTypeServiceImpl.ResponseEnum.GET_FAIL.code, DeviceTypeServiceImpl.ResponseEnum.GET_FAIL.message, null);
         }
     }

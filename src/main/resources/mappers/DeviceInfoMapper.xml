@@ -5,28 +5,28 @@
 <mapper namespace="com.it.iotplatform.mapper.DeviceInfoMapper">
 
     <resultMap id="deviceInfoResultMap" type="com.it.iotplatform.model.DeviceInfo" autoMapping="true">
-        <id property="deviceNumber" column="device_number"/>
-        <result property="deviceSort" column="device_sort" />
-        <result property="deviceBrand" column="device_brand" />
-        <result property="deviceTypeName" column="device_type_name" />
-        <result property="deviceModel" column="device_model" />
-        <result property="deviceNumber" column="device_number" />
-        <result property="installDate" column="install_date" />
+        <id property="deviceNumber" column="deviceNumber"/>
+        <result property="deviceSort" column="deviceSort" />
+        <result property="deviceBrand" column="deviceBrand" />
+        <result property="deviceTypeName" column="deviceTypeName" />
+        <result property="deviceModel" column="deviceModel" />
+        <result property="deviceNumber" column="deviceNumber" />
+        <result property="installDate" column="installDate" />
         <result property="longitude" column="longitude" />
         <result property="latitude" column="latitude" />
-        <result property="installAddress" column="install_address" />
+        <result property="installAddress" column="installAddress" />
     </resultMap>
     <insert id="addDeviceInfo" parameterType="com.it.iotplatform.model.DeviceInfo" useGeneratedKeys="true">
         INSERT INTO DeviceInfo
-        (device_sort,
-         device_brand,
-         device_type_name,
-         device_model,
-         device_number,
-         install_date,
+        (deviceSort,
+         deviceBrand,
+         deviceTypeName,
+         deviceModel,
+         deviceNumber,
+         installDate,
          longitude,
          latitude,
-         install_address,
+         installAddress,
         )
         VALUES
             (#{deviceSort},
@@ -42,21 +42,21 @@
     <update id="updateDeviceInfo" parameterType="com.it.iotplatform.model.DeviceInfo">
         UPDATE DeviceInfo
         SET
-            device_sort=#{deviceSort},
-            device_brand=#{deviceBrand},
-            device_type_name=#{deviceTypeName},
-            device_model=#{deviceModel},
-            device_number=#{deviceNumber},
-            install_date=#{deviceDate},
+            deviceSort=#{deviceSort},
+            deviceBrand=#{deviceBrand},
+            deviceTypeName=#{deviceTypeName},
+            deviceModel=#{deviceModel},
+            deviceNumber=#{deviceNumber},
+            installDate=#{deviceDate},
             longitude=#{longitude},
             latitude=#{latitude},
-            install_address=#{installAddress},
-            where device_number=#{deviceNumber}
+            installAddress=#{installAddress},
+            where deviceNumber=#{deviceNumber}
     </update>
     <delete id="deleteDeviceInfoById">
-        DELETE from DeviceInfo where device_number=#{deviceNumber}
+        DELETE from DeviceInfo where deviceNumber=#{deviceNumber}
     </delete>
     <select id="getDeviceInfo" resultMap="deviceInfoResultMap">
-        select * from DeviceInfo where where device_number=#{deviceNumber}
+        select * from DeviceInfo where deviceNumber=#{deviceNumber}
     </select>
 </mapper>

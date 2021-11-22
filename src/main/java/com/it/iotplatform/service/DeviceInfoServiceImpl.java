@@ -127,7 +127,7 @@ public class DeviceInfoServiceImpl implements DeviceInfoService {
                         deviceInfo.getDeviceTypeName() == null || "".equals(deviceInfo.getDeviceTypeName()) ||
                         deviceInfo.getDeviceModel() == null || "".equals(deviceInfo.getDeviceModel()) ||
                         deviceInfo.getDeviceNumber() == null || "".equals(deviceInfo.getDeviceNumber()) ||
-                        deviceInfo.getDeviceDate() == null || "".equals(deviceInfo.getDeviceDate()) ||
+                        deviceInfo.getInstallDate() == null || "".equals(deviceInfo.getInstallDate()) ||
                         deviceInfo.getLongitude() == null || "".equals(deviceInfo.getLongitude()) ||
                         deviceInfo.getLatitude() == null || "".equals(deviceInfo.getLatitude()) ||
                         deviceInfo.getInstallAddress() == null || "".equals(deviceInfo.getInstallAddress()) ||

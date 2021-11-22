@@ -5,29 +5,32 @@
 <mapper namespace="com.it.iotplatform.mapper.DeviceTypeMapper">
 
     <resultMap id="deviceTypeResultMap" type="com.it.iotplatform.model.DeviceType" autoMapping="true">
-        <id property="deviceTypeCode" column="device_type_code"/>
-        <result property="deviceTypeName" column="device_type_name" />
+        <id property="deviceTypeCode" column="deviceTypeCode"/>
+        <result property="deviceTypeName" column="deviceTypeName" />
     </resultMap>
     <insert id="addDeviceType" parameterType="com.it.iotplatform.model.DeviceType" useGeneratedKeys="true">
         INSERT INTO DeviceType
-        (device_type_code,
-         device_type_name,
+        (deviceTypeCode,
+         deviceTypeName,
          )
         VALUES
             (#{deviceTypeCode},
              #{deviceTypeName})
     </insert>
+
     <update id="updateDeviceType" parameterType="com.it.iotplatform.model.DeviceType">
         UPDATE DeviceType
         SET
-            device_type_code=#{deviceTypeCode},
-            device_type_name=#{deviceTypeName},
-        where device_type_code=#{deviceTypeCode}
+            deviceTypeCode=#{deviceTypeCode},
+            deviceTypeName=#{deviceTypeName},
+        where deviceTypeCode=#{deviceTypeCode}
     </update>
+
     <delete id="deleteDeviceTypeById">
-        DELETE from DeviceType where device_type_code=#{deviceTypeCode}
+        DELETE from DeviceType where deviceTypeCode=#{deviceTypeCode}
     </delete>
-    <select id="getDeviceType" resultMap="deviceTypeResultMap">
-        select * from DeviceType where where device_type_code=#{deviceTypeCode}
+
+    <select id="getDeviceType" parameterType="String" resultMap="deviceTypeResultMap">
+        select * from DeviceType where deviceTypeCode=#{deviceTypeCode}
     </select>
 </mapper>
