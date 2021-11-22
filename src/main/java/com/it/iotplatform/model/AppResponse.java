@@ -79,7 +79,19 @@ public class AppResponse<T> {
         /**
          * 999:token过期
          */
-        TOKEN_OVERDUE(999,"token过期");
+        TOKEN_OVERDUE(999,"token过期"),
+        /**
+         * 400：password错误
+         */
+        PASSWORD_WRONG(400,"password错误"),
+        /**
+         * 401：password错误
+         */
+        PASSWORD_CORRECT(401,"password正确"),
+        /**
+         * 402：account不存在
+         */
+        ACCOUNT_NOT_EXIST(402,"account不存在");
         private int code;
         private String message;
 
