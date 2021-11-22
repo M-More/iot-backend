@@ -25,10 +25,32 @@ public class EventConfigServiceImpl implements EventConfigService {
     }
 
     @Override
+    public EventConfig getEventConfigById(String eventConfigId) {
+        return eventConfigMapper.getEventConfigById(eventConfigId);
+    }
+
+    @Override
     public AppResponse<EventConfig> addEventConfig(EventConfig eventConfig) {
         try {
             eventConfigMapper.addEventConfig(eventConfig);
             return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.SUCCESS);
+        }
+        catch (Exception e) {
+            System.out.println(e);
+            return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.FAILURE);
+        }
+    }
+
+    @Override
+    public AppResponse<EventConfig> deleteEventConfig(String eventConfigId) {
+        try {
+            int response = eventConfigMapper.deleteEventConfigById(eventConfigId);
+            if (response == 0) {
+                return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.FAILURE);
+            }
+            else {
+                return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.SUCCESS);
+            }
         }
         catch (Exception e) {
             System.out.println(e);

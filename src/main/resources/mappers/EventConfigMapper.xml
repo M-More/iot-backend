@@ -7,10 +7,18 @@
         select *
         from eventConfig
     </select>
+    <select id="getEventConfigById" resultType="com.it.iotplatform.model.EventConfig">
+        select *
+        from eventConfig
+        where eventConfigId=#{eventConfigId}
+    </select>
     <insert id="addEventConfig" parameterType="com.it.iotplatform.model.EventConfig" useGeneratedKeys="true">
         insert into eventConfig(eventName, notificationDescription, eventLevel, deviceTypeName, alarmName, createTime, createUser, updateUser, state)
         values (#{eventName}, #{notificationDescription}, #{eventLevel}, #{deviceTypeName}, #{alarmName}, now(), #{createUser}, #{createUser}, "1")
     </insert>
+    <delete id="deleteEventConfigById">
+        DELETE from eventConfig where eventConfigId=#{eventConfigId}
+    </delete>
 <!--    <update id="updateEquipment" parameterType="com.it.class11springboot.model.Equipment">-->
 <!--        UPDATE equipment_info-->
 <!--        SET-->

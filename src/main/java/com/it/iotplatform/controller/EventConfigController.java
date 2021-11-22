@@ -24,8 +24,18 @@ public class EventConfigController {
         return eventConfigService.getAllEventConfig();
     }
 
+    @GetMapping("/getById")
+    private EventConfig  getEventConfigById(String eventConfigId) {
+        return eventConfigService.getEventConfigById(eventConfigId);
+    }
+
     @PostMapping(value ="/add")
     public AppResponse<EventConfig> addEventConfig(EventConfig eventConfig) {
         return eventConfigService.addEventConfig(eventConfig);
+    }
+
+    @PostMapping(value ="/delete")
+    public AppResponse<EventConfig> deleteEventConfig(String eventConfigId){
+        return eventConfigService.deleteEventConfig(eventConfigId);
     }
 }

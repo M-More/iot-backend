@@ -8,5 +8,7 @@ import java.util.List;
 
 public interface EventConfigService {
     List<EventConfig> getAllEventConfig();
+    EventConfig  getEventConfigById(String eventConfigId);
     AppResponse<EventConfig> addEventConfig(EventConfig eventConfig);
+    AppResponse<EventConfig> deleteEventConfig(String eventConfigId);
 }
