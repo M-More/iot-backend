@@ -2,6 +2,7 @@ package com.it.iotplatform.service.impl;
 
 import com.it.iotplatform.mapper.EventConfigMapper;
 import com.it.iotplatform.mapper.SupplierMapper;
+import com.it.iotplatform.model.AppResponse;
 import com.it.iotplatform.model.EventConfig;
 import com.it.iotplatform.service.EventConfigService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,5 +22,17 @@ public class EventConfigServiceImpl implements EventConfigService {
     @Override
     public List<EventConfig> getAllEventConfig() {
         return eventConfigMapper.getAllEventConfig();
+    }
+
+    @Override
+    public AppResponse<EventConfig> addEventConfig(EventConfig eventConfig) {
+        try {
+            eventConfigMapper.addEventConfig(eventConfig);
+            return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.SUCCESS);
+        }
+        catch (Exception e) {
+            System.out.println(e);
+            return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.FAILURE);
+        }
     }
 }

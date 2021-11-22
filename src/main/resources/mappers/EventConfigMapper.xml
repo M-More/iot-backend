@@ -8,8 +8,8 @@
         from eventConfig
     </select>
     <insert id="addEventConfig" parameterType="com.it.iotplatform.model.EventConfig" useGeneratedKeys="true">
-        insert into eventConfig(eventName, notificationDescription, eventLevel, deviceTypeName, alarmName)
-        values (#{equipmentId}, #{notificationDescription}, #{eventLevel}, #{deviceTypeName}, #{alarmName})
+        insert into eventConfig(eventName, notificationDescription, eventLevel, deviceTypeName, alarmName, createTime, createUser, updateUser, state)
+        values (#{eventName}, #{notificationDescription}, #{eventLevel}, #{deviceTypeName}, #{alarmName}, now(), #{createUser}, #{createUser}, "1")
     </insert>
 <!--    <update id="updateEquipment" parameterType="com.it.class11springboot.model.Equipment">-->
 <!--        UPDATE equipment_info-->
