@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.iotplatform.mapper.DeviceTypeMapper">
+
+    <resultMap id="deviceTypeResultMap" type="com.it.iotplatform.model.DeviceType" autoMapping="true">
+        <id property="deviceTypeCode" column="device_type_code"/>
+        <result property="deviceTypeName" column="device_type_name" />
+    </resultMap>
+    <insert id="addDeviceType" parameterType="com.it.iotplatform.model.DeviceType" useGeneratedKeys="true">
+        INSERT INTO DeviceType
+        (device_type_code,
+         device_type_name,
+         )
+        VALUES
+            (#{deviceTypeCode},
+             #{deviceTypeName})
+    </insert>
+    <update id="updateDeviceType" parameterType="com.it.iotplatform.model.DeviceType">
+        UPDATE DeviceType
+        SET
+            device_type_code=#{deviceTypeCode},
+            device_type_name=#{deviceTypeName},
+        where device_type_code=#{deviceTypeCode}
+    </update>
+    <delete id="deleteDeviceTypeById">
+        DELETE from DeviceType where device_type_code=#{deviceTypeCode}
+    </delete>
+    <select id="getDeviceType" resultMap="deviceTypeResultMap">
+        select * from DeviceType where where device_type_code=#{deviceTypeCode}
+    </select>
+</mapper>
