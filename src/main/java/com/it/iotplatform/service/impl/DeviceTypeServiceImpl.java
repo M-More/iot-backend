@@ -1,11 +1,14 @@
 package com.it.iotplatform.service.impl;
 
 import com.it.iotplatform.mapper.DeviceTypeMapper;
+import com.it.iotplatform.model.AppResponse;
 import com.it.iotplatform.model.DeviceType;
 import com.it.iotplatform.response.Response;
 import com.it.iotplatform.service.DeviceTypeService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @Transactional(rollbackFor = Exception.class)
@@ -112,6 +115,9 @@ public class DeviceTypeServiceImpl implements DeviceTypeService {
             return new Response<>(DeviceTypeServiceImpl.ResponseEnum.GET_FAIL.code, DeviceTypeServiceImpl.ResponseEnum.GET_FAIL.message, null);
         }
     }
+
+    @Override
+    public List<String> getAllDeviceType() {return deviceTypeMapper.getAllDeviceType();}
 
     /**
      * 校验输入

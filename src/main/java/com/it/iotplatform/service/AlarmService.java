@@ -10,4 +10,5 @@ public interface AlarmService {
     String insertAlarm(Alarm alarm);
     String updateAlarm(Alarm alarm);
     String deleteAlarm(Alarm alarm);
+    List<String> getAlarmByDevice(Alarm alarm);
 }

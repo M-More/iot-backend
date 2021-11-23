@@ -33,4 +33,6 @@ public class AlarmController {
     private String updateAlarm(Alarm alarm){return alarmService.updateAlarm(alarm);}
     @GetMapping("/delete")
     private String deleteAlarm(Alarm alarm){return alarmService.deleteAlarm(alarm);}
+    @GetMapping("/getbydevice")
+    private List<String> getAlarmNameByDeviceTypeName(Alarm alarm){return alarmService.getAlarmByDevice(alarm);}
 }

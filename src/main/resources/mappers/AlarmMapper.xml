@@ -15,6 +15,11 @@
         or (alarmLevel = #{alarmLevel}
             and alarmCode like CONCAT(#{alarmCode},'%'));
     </select>
+    <select id="getAlarmNameByDeviceType" parameterType="com.it.iotplatform.model.Alarm" resultType="string">
+        select alarmName
+        from alarm
+        where deviceTypeName = #{deviceTypeName}
+    </select>
     <insert id="insertAlarm" parameterType="com.it.iotplatform.model.Alarm">
         insert into alarm(alarmName,alarmCode,alarmLevel,deviceTypeName,status,ruleDescription)
         value (
