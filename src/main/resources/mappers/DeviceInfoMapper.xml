@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.iotplatform.mapper.DeviceInfoMapper">
+
+    <resultMap id="deviceInfoResultMap" type="com.it.iotplatform.model.DeviceInfo" autoMapping="true">
+        <id property="deviceNumber" column="deviceNumber"/>
+        <result property="deviceSort" column="deviceSort" />
+        <result property="deviceBrand" column="deviceBrand" />
+        <result property="deviceTypeName" column="deviceTypeName" />
+        <result property="deviceModel" column="deviceModel" />
+        <result property="deviceNumber" column="deviceNumber" />
+        <result property="installDate" column="installDate" />
+        <result property="longitude" column="longitude" />
+        <result property="latitude" column="latitude" />
+        <result property="installAddress" column="installAddress" />
+    </resultMap>
+    <insert id="addDeviceInfo" parameterType="com.it.iotplatform.model.DeviceInfo" useGeneratedKeys="true">
+        INSERT INTO DeviceInfo
+        (deviceSort,
+         deviceBrand,
+         deviceTypeName,
+         deviceModel,
+         deviceNumber,
+         installDate,
+         longitude,
+         latitude,
+         installAddress,
+        )
+        VALUES
+            (#{deviceSort},
+             #{deviceBrand},
+             #{deviceTypeName},
+             #{deviceModel},
+             #{deviceNumber},
+             #{deviceDate},
+             #{longitude},
+             #{latitude},
+             #{installAddress});
+    </insert>
+    <update id="updateDeviceInfo" parameterType="com.it.iotplatform.model.DeviceInfo">
+        UPDATE DeviceInfo
+        SET
+            deviceSort=#{deviceSort},
+            deviceBrand=#{deviceBrand},
+            deviceTypeName=#{deviceTypeName},
+            deviceModel=#{deviceModel},
+            deviceNumber=#{deviceNumber},
+            installDate=#{deviceDate},
+            longitude=#{longitude},
+            latitude=#{latitude},
+            installAddress=#{installAddress},
+            where deviceNumber=#{deviceNumber}
+    </update>
+    <delete id="deleteDeviceInfoById">
+        DELETE from DeviceInfo where deviceNumber=#{deviceNumber}
+    </delete>
+    <select id="getDeviceInfo" resultMap="deviceInfoResultMap">
+        select * from user where state = 1
+        <if test="deviceTypeName != null">
+            and deviceTypeName like concat('%',#{deviceTypeName},'%')
+        </if>
+        <if test="deviceBrand != null">
+            and deviceBrand like concat('%', #{deviceBrand}, '%')
+        </if>
+        <if test="deviceNumber != null">
+            and deviceNumber like concat('%', #{deviceNumber}, '%')
+        </if>
+        order by #{updateTime} DESC, #{createTime} DESC
+    </select>
+</mapper>
