@@ -57,6 +57,16 @@
         DELETE from DeviceInfo where deviceNumber=#{deviceNumber}
     </delete>
     <select id="getDeviceInfo" resultMap="deviceInfoResultMap">
-        select * from DeviceInfo where deviceNumber=#{deviceNumber}
+        select * from user where state = 1
+        <if test="deviceTypeName != null">
+            and deviceTypeName like concat('%',#{deviceTypeName},'%')
+        </if>
+        <if test="deviceBrand != null">
+            and deviceBrand like concat('%', #{deviceBrand}, '%')
+        </if>
+        <if test="deviceNumber != null">
+            and deviceNumber like concat('%', #{deviceNumber}, '%')
+        </if>
+        order by #{updateTime} DESC, #{createTime} DESC
     </select>
 </mapper>

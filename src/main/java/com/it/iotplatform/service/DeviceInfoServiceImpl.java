@@ -1,10 +1,7 @@
 package com.it.iotplatform.service;
 
 import com.it.iotplatform.mapper.DeviceInfoMapper;
-import com.it.iotplatform.mapper.DeviceInfoMapper;
 import com.it.iotplatform.model.DeviceInfo;
-import com.it.iotplatform.model.DeviceInfo;
-import com.it.iotplatform.model.DeviceType;
 import com.it.iotplatform.response.Response;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

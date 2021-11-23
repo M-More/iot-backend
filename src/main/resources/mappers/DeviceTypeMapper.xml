@@ -31,6 +31,7 @@
     </delete>
 
     <select id="getDeviceType" parameterType="String" resultMap="deviceTypeResultMap">
-        select * from DeviceType where deviceTypeCode=#{deviceTypeCode}
+        select * from (select * from DeviceType ORDER BY #{updateTime} DESC, #{createTime} DESC)
+        where deviceTypeCode like concat('%', #{deviceTypeCode}, '%')
     </select>
 </mapper>
