@@ -19,19 +19,14 @@
     <delete id="deleteEventConfigById">
         DELETE from eventConfig where eventConfigId=#{eventConfigId}
     </delete>
-<!--    <update id="updateEquipment" parameterType="com.it.class11springboot.model.Equipment">-->
-<!--        UPDATE equipment_info-->
-<!--        SET-->
-<!--            equipment_id=#{equipmentId},-->
-<!--            equipment_name=#{equipmentName},-->
-<!--            equipment_type=#{equipmentType},-->
-<!--            equipment_state=#{equipmentState},-->
-<!--            supplier_id=#{supplierId},-->
-<!--            update_time=#{updateTime},-->
-<!--            update_user=#{updateUserString},-->
-<!--            create_time=#{createTime},-->
-<!--            create_user=#{createUserString},-->
-<!--            state=#{state}-->
-<!--        where id=#{id}-->
-<!--    </update>-->
+    <update id="updateEventConfig" parameterType="com.it.iotplatform.model.EventConfig">
+        UPDATE eventConfig
+        SET
+            eventName=#{eventName},
+            eventLevel=#{eventLevel},
+            deviceTypeName=#{deviceTypeName},
+            alarmName=#{alarmName},
+            updateUser=#{updateUser}
+        where eventConfigId=#{eventConfigId}
+    </update>
 </mapper>

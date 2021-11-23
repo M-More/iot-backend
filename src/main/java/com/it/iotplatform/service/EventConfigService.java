@@ -12,4 +12,5 @@ public interface EventConfigService {
     EventConfig  getEventConfigById(String eventConfigId);
     AppResponse<EventConfig> addEventConfig(EventConfig eventConfig);
     AppResponse<EventConfig> deleteEventConfig(String eventConfigId);
+    AppResponse<EventConfig> updateEventConfig(EventConfig eventConfig);
 }

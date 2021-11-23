@@ -39,4 +39,9 @@ public class EventConfigController {
     public AppResponse<EventConfig> deleteEventConfig(String eventConfigId){
         return eventConfigService.deleteEventConfig(eventConfigId);
     }
+
+    @PostMapping(value ="/update")
+    public AppResponse<EventConfig> updateEventConfig(EventConfig eventConfig) {
+        return eventConfigService.updateEventConfig(eventConfig);
+    }
 }

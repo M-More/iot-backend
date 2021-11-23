@@ -9,7 +9,7 @@ import java.util.List;
 @Mapper
 public interface EventConfigMapper {
     List<EventConfig> getAllEventConfig();
-    EventConfig  getEventConfigById(String eventConfigId);
+    EventConfig getEventConfigById(String eventConfigId);
     boolean addEventConfig(EventConfig eventConfig);
     Integer deleteEventConfigById(String eventConfigId);
     Integer updateEventConfig(EventConfig eventConfig);
