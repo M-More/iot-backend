@@ -7,4 +7,11 @@
         select *
         from eventInfo
     </select>
+    <update id="updateEventInfo" parameterType="com.it.iotplatform.model.EventInfo">
+        UPDATE eventInfo
+        SET
+            eventInfoStatus=#{eventInfoStatus},
+            updateUser=#{updateUser}
+        where eventInfoId=#{eventInfoId}
+    </update>
 </mapper>

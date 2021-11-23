@@ -1,12 +1,10 @@
 package com.it.iotplatform.controller;
 
 import com.it.iotplatform.model.AppResponse;
+import com.it.iotplatform.model.EventConfig;
 import com.it.iotplatform.model.EventInfo;
 import com.it.iotplatform.service.EventInfoService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @RestController
@@ -19,7 +17,12 @@ public class EventInfoController {
     }
 
     @GetMapping("/getAll")
-    private AppResponse<EventInfo> getAllEventConfig(EventInfo eventInfo) {
+    private AppResponse<EventInfo> getAllEventInfo(EventInfo eventInfo) {
         return eventInfoService.getAllEventInfo(eventInfo);
+    }
+
+    @PostMapping(value ="/update")
+    public AppResponse<EventInfo> updateEventInfo(EventInfo eventInfo) {
+        return eventInfoService.updateEventInfo(eventInfo);
     }
 }
