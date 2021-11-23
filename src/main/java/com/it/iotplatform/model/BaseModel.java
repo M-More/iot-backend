@@ -1,7 +1,6 @@
 package com.it.iotplatform.model;
 
 import java.util.Date;
-
 /**
  * 基础字段类，所有业务实体类都应该继承此类
  * @author luojiajia
