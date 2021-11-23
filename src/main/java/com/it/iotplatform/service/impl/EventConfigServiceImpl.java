@@ -1,5 +1,7 @@
 package com.it.iotplatform.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.it.iotplatform.mapper.EventConfigMapper;
 import com.it.iotplatform.mapper.SupplierMapper;
 import com.it.iotplatform.model.AppResponse;
@@ -20,8 +22,11 @@ public class EventConfigServiceImpl implements EventConfigService {
     }
 
     @Override
-    public List<EventConfig> getAllEventConfig() {
-        return eventConfigMapper.getAllEventConfig();
+    public AppResponse<EventConfig> getAllEventConfig(EventConfig eventConfig) {
+        PageHelper.startPage(eventConfig.getPage(), eventConfig.getPageSize());
+        List<EventConfig> eventConfigList = eventConfigMapper.getAllEventConfig();
+        PageInfo<EventConfig> pageInfo = new PageInfo<>(eventConfigList);
+        return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.SUCCESS, pageInfo);
     }
 
     @Override

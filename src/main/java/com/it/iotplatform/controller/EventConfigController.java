@@ -1,5 +1,6 @@
 package com.it.iotplatform.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.it.iotplatform.model.AppResponse;
 import com.it.iotplatform.model.EventConfig;
 import com.it.iotplatform.service.EventConfigService;
@@ -20,8 +21,8 @@ public class EventConfigController {
     }
 
     @GetMapping("/getAll")
-    private List<EventConfig> getAllEventConfig() {
-        return eventConfigService.getAllEventConfig();
+    private AppResponse<EventConfig> getAllEventConfig(EventConfig eventConfig) {
+        return eventConfigService.getAllEventConfig(eventConfig);
     }
 
     @GetMapping("/getById")
