@@ -41,4 +41,9 @@ public class AlarmServiceImpl implements AlarmService {
     public String deleteAlarm(Alarm alarm) {
         return alarmMapper.deleteAlarm(alarm).toString();
     }
+
+    @Override
+    public List<String> getAlarmByDevice(Alarm alarm) {
+        return alarmMapper.getAlarmNameByDeviceType(alarm);
+    }
 }

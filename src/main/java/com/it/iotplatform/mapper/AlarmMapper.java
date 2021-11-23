@@ -12,5 +12,6 @@ public interface AlarmMapper {
     Integer insertAlarm(Alarm alarm);
     Integer updateAlarm(Alarm alarm);
     Integer deleteAlarm(Alarm alarm);
+    List<String> getAlarmNameByDeviceType(Alarm alarm);
 }
 

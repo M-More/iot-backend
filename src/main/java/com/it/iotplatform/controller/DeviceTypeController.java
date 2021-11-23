@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/deviceType")
 public class DeviceTypeController {
@@ -15,6 +17,11 @@ public class DeviceTypeController {
 
     public DeviceTypeController(DeviceTypeService deviceTypeService) {
         this.deviceTypeService = deviceTypeService;
+    }
+
+    @GetMapping("/getAll")
+    private List<String> getAllDeviceType(){
+        return deviceTypeService.getAllDeviceType();
     }
 
     @PostMapping(value ="/addDeviceType")

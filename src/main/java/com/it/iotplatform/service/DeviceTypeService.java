@@ -1,7 +1,10 @@
 package com.it.iotplatform.service;
 
+import com.it.iotplatform.model.AppResponse;
 import com.it.iotplatform.model.DeviceType;
 import com.it.iotplatform.response.Response;
+
+import java.util.List;
 
 public interface DeviceTypeService {
     /**
@@ -31,6 +34,8 @@ public interface DeviceTypeService {
      * @return 返回相应的客户端响应JSON格式数据.
      */
     Response<DeviceType> getDeviceType(String deviceTypeCode);
+
+    List<String> getAllDeviceType();
 }
 
 
