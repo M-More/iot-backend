@@ -14,11 +14,13 @@ public class EventInfo extends BaseModel{
     private String eventInfoStatus;
     private String eventInfoResource;
     private int alarmFrequency;
-    private String eventInfoOccurTime;
+    private String eventInfoOccurenceTime;
     private String eventInfoDescription;
+    private String eventLevel;
     private String deviceNumber;
     private String deviceTypeName;
     private String deviceStatus;
     private String addressDescription;
-    private List<EventLog> eventLogs;
+    private String installDate;
+    private String opinion;
 }
