@@ -3,6 +3,7 @@ package com.it.iotplatform.controller;
 import com.it.iotplatform.model.AppResponse;
 import com.it.iotplatform.model.EventInfo;
 import com.it.iotplatform.model.EventLog;
+import com.it.iotplatform.model.EventStat;
 import com.it.iotplatform.service.EventInfoService;
 import com.it.iotplatform.service.EventLogService;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +30,11 @@ public class EventInfoController {
     @PostMapping(value ="/update")
     public AppResponse<EventInfo> updateEventInfo(EventInfo eventInfo) {
         return eventInfoService.updateEventInfo(eventInfo);
+    }
+
+    @GetMapping("/getEventStat")
+    private EventStat getEventStat() {
+        return eventInfoService.getEventStat();
     }
 
     @GetMapping(value ="/getLog")

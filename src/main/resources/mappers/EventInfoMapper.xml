@@ -14,4 +14,36 @@
             updateUser=#{updateUser}
         where eventInfoId=#{eventInfoId}
     </update>
+    <select id="getEventStat" resultType="com.it.iotplatform.model.EventStat">
+        SELECT
+            count(case when true then 1 end) as total,
+            count(case when eventInfoStatus='未处理' then 1 end) as todo,
+            count(case when eventInfoStatus='处理中' then 1 end) as doing,
+            count(case when eventInfoStatus='已处理' then 1 end) as done,
+            count(case when eventLevel='重要' then 1 end) as important_total,
+            count(case when eventLevel='普通' then 1 end) as normal_total,
+            count(case when eventInfoStatus='未处理' and eventLevel='重要' then 1 end) as important_todo,
+            count(case when eventInfoStatus='处理中' and eventLevel='重要' then 1 end) as important_doing,
+            count(case when eventInfoStatus='已处理' and eventLevel='重要' then 1 end) as important_done,
+            count(case when eventInfoStatus='未处理' and eventLevel='普通' then 1 end) as normal_todo,
+            count(case when eventInfoStatus='处理中' and eventLevel='普通' then 1 end) as normal_doing,
+            count(case when eventInfoStatus='已处理' and eventLevel='普通' then 1 end) as normal_done,
+            count(case when (month(eventInfoOccurenceTime)=month(now())-1) and (year(eventInfoOccurenceTime)=year(now())) and eventLevel='重要' then 1 end) as lastmonth_important,
+            count(case when (month(eventInfoOccurenceTime)=month(now())-1) and (year(eventInfoOccurenceTime)=year(now())) and eventLevel='普通' then 1 end) as lastmonth_normal,
+            count(case when (month(eventInfoOccurenceTime)=month(now())-1) and (year(eventInfoOccurenceTime)=year(now()))-1 and eventLevel='重要' then 1 end) as lastyear_important,
+            count(case when (month(eventInfoOccurenceTime)=month(now())-1) and (year(eventInfoOccurenceTime)=year(now()))-1 and eventLevel='普通' then 1 end) as lastyear_normal,
+            count(case when (month(eventInfoOccurenceTime)=1) and (year(eventInfoOccurenceTime)=year(now())) then 1 end) as thisyear_01,
+            count(case when (month(eventInfoOccurenceTime)=2) and (year(eventInfoOccurenceTime)=year(now())) then 1 end) as thisyear_02,
+            count(case when (month(eventInfoOccurenceTime)=3) and (year(eventInfoOccurenceTime)=year(now())) then 1 end) as thisyear_03,
+            count(case when (month(eventInfoOccurenceTime)=4) and (year(eventInfoOccurenceTime)=year(now())) then 1 end) as thisyear_04,
+            count(case when (month(eventInfoOccurenceTime)=5) and (year(eventInfoOccurenceTime)=year(now())) then 1 end) as thisyear_05,
+            count(case when (month(eventInfoOccurenceTime)=6) and (year(eventInfoOccurenceTime)=year(now())) then 1 end) as thisyear_06,
+            count(case when (month(eventInfoOccurenceTime)=7) and (year(eventInfoOccurenceTime)=year(now())) then 1 end) as thisyear_07,
+            count(case when (month(eventInfoOccurenceTime)=8) and (year(eventInfoOccurenceTime)=year(now())) then 1 end) as thisyear_08,
+            count(case when (month(eventInfoOccurenceTime)=9) and (year(eventInfoOccurenceTime)=year(now())) then 1 end) as thisyear_09,
+            count(case when (month(eventInfoOccurenceTime)=10) and (year(eventInfoOccurenceTime)=year(now())) then 1 end) as thisyear_10,
+            count(case when (month(eventInfoOccurenceTime)=11) and (year(eventInfoOccurenceTime)=year(now())) then 1 end) as thisyear_11,
+            count(case when (month(eventInfoOccurenceTime)=12) and (year(eventInfoOccurenceTime)=year(now())) then 1 end) as thisyear_12
+        FROM eventInfo;
+    </select>
 </mapper>
