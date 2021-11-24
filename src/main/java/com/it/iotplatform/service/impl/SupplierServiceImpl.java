@@ -5,7 +5,6 @@ import com.github.pagehelper.PageInfo;
 import com.it.iotplatform.mapper.SupplierMapper;
 import com.it.iotplatform.model.AppResponse;
 import com.it.iotplatform.model.Supplier;
-import com.it.iotplatform.model.Supplier;
 import com.it.iotplatform.service.SupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
