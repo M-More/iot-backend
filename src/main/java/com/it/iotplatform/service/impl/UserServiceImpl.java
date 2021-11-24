@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
     public AppResponse checkUser(User user) {
         String psw;
         try {
-            psw = userMapper.getUserPswByAccount(user);
+            psw = userMapper.getUserPswByAccount(user.getUserAccount());
         }
         catch (Exception e){
             return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.FAILURE);
@@ -47,5 +47,10 @@ public class UserServiceImpl implements UserService {
         else {
             return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.PASSWORD_WRONG);
         }
+    }
+
+    @Override
+    public String getPhone(String userName) {
+        return userMapper.getPhoneByName(userName);
     }
 }

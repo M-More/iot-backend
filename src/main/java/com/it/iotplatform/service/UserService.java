@@ -6,4 +6,5 @@ import com.it.iotplatform.model.User;
 public interface UserService {
     public AppResponse<User> addUser(User user);
     public AppResponse checkUser(User user);
+    public String getPhone(String userName);
 }
