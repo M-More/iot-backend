@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService {
             return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.ACCOUNT_NOT_EXIST);
         }
         if (psw.equals(user.getUserPassword())){
-            return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.PASSWORD_CORRECT);
+            return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.PASSWORD_CORRECT,userMapper.getUserByAccount(user.getUserAccount()));
         }
         else {
             return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.PASSWORD_WRONG);

@@ -8,8 +8,13 @@
         FROM user
         WHERE userName = #{userName}
     </select>
-    <select id="getUserPswByAccount" parameterType="com.it.iotplatform.model.User" resultType="string">
+    <select id="getUserPswByAccount" parameterType="string" resultType="string">
         SELECT userPassword
+        FROM user
+        WHERE userAccount = #{userAccount}
+    </select>
+    <select id="getUserByAccount" parameterType="string" resultType="com.it.iotplatform.model.User">
+        SELECT *
         FROM user
         WHERE userAccount = #{userAccount}
     </select>

@@ -27,6 +27,9 @@
          longitude,
          latitude,
          installAddress,
+         createUser,
+         updateUser,
+         state
         )
         VALUES
             (#{deviceSort},
@@ -37,7 +40,11 @@
              #{deviceDate},
              #{longitude},
              #{latitude},
-             #{installAddress});
+             #{installAddress},
+             #{createUser},
+             #{createUser},
+             1
+             );
     </insert>
     <update id="updateDeviceInfo" parameterType="com.it.iotplatform.model.DeviceInfo">
         UPDATE DeviceInfo
@@ -51,6 +58,7 @@
             longitude=#{longitude},
             latitude=#{latitude},
             installAddress=#{installAddress},
+            updateUser=#{updateUser}
             where deviceNumber=#{deviceNumber}
     </update>
     <delete id="deleteDeviceInfoById">

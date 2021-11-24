@@ -111,6 +111,9 @@ public class AppResponse<T> {
             return new AppResponse<>(codeEnum.code, codeEnum.message, pageInfo.getList(),
                     pageInfo.getTotal(), pageInfo.getPageNum(), pageInfo.getPageSize());
         }
+        public static <T> AppResponse<T> build(CodeEnum codeEnum,List<T> data){
+            return new AppResponse<>(codeEnum.code,codeEnum.message,data);
+        }
         public static AppResponse build(CodeEnum codeEnum){
             return new AppResponse(codeEnum.code, codeEnum.message);
         }
@@ -148,6 +151,12 @@ public class AppResponse<T> {
     public AppResponse(int code, String message) {
         this.code = code;
         this.message = message;
+    }
+
+    public AppResponse(int code, String message, List<T> data){
+        this.code = code;
+        this.message = message;
+        this.data = data;
     }
 
     public AppResponse(int code, String message, List<T> data, long total, int page, int pageSize) {
