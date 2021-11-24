@@ -1,13 +1,11 @@
 package com.it.iotplatform.controller;
 
 import com.it.iotplatform.model.Alarm;
+import com.it.iotplatform.model.AppResponse;
 import com.it.iotplatform.model.Supplier;
 import com.it.iotplatform.service.AlarmService;
 import com.it.iotplatform.service.SupplierService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -24,15 +22,27 @@ public class AlarmController {
     }
 
     @GetMapping("/getAll")
-    private List<Alarm> getAllSupplier(){return alarmService.getAllAlarm();}
-    @GetMapping("/findBy")
-    private List<Alarm> findAlarmByCondition(Alarm alarm){return alarmService.findAlarmByCondition(alarm);}
-    @GetMapping("/insert")
-    private String insertAlarm(Alarm alarm){return alarmService.insertAlarm(alarm);}
-    @GetMapping("/update")
-    private String updateAlarm(Alarm alarm){return alarmService.updateAlarm(alarm);}
-    @GetMapping("/delete")
-    private String deleteAlarm(Alarm alarm){return alarmService.deleteAlarm(alarm);}
-    @GetMapping("/getbydevice")
-    private List<String> getAlarmNameByDeviceTypeName(Alarm alarm){return alarmService.getAlarmByDevice(alarm);}
+    private AppResponse<Alarm> getAllSupplier(Alarm alarm){
+        return alarmService.getAllAlarm(alarm);
+    }
+    @GetMapping("/getByCondition")
+    private List<Alarm> getAlarmByCondition(Alarm alarm){
+        return alarmService.getAlarmByCondition(alarm);
+    }
+    @PostMapping("/add")
+    private AppResponse<Alarm> addAlarm(Alarm alarm){
+        return alarmService.addAlarm(alarm);
+    }
+    @PostMapping("/update")
+    private AppResponse<Alarm> updateAlarm(Alarm alarm){
+        return alarmService.updateAlarm(alarm);
+    }
+    @PostMapping("/delete")
+    private AppResponse<Alarm> deleteAlarm(Alarm alarm){
+        return alarmService.deleteAlarm(alarm);
+    }
+    @GetMapping("/getBy")
+    private List<String> getAlarmNameByDeviceTypeName(Alarm alarm){
+        return alarmService.getAlarmByDevice(alarm);
+    }
 }

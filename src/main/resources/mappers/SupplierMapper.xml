@@ -7,13 +7,13 @@
         select *
         from supplier
     </select>
-    <select id="findSupplierByNameOrCode" resultType="com.it.iotplatform.model.Supplier">
+    <select id="getSupplierByNameOrCode" resultType="com.it.iotplatform.model.Supplier">
         select *
         from supplier
         where supplierName like CONCAT(#{supplierName},'%')
         or supplierCode like CONCAT(#{supplierCode},'%')
     </select>
-    <insert id="insertSupplier" parameterType="com.it.iotplatform.model.Supplier">
+    <insert id="addSupplier" parameterType="com.it.iotplatform.model.Supplier">
         insert into supplier(supplierName,supplierCode,contactTel,contactName,address,note)
         value (
             #{supplierName},

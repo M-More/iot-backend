@@ -21,9 +21,13 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/insert")
-    private AppResponse<User> insertUser(User user){return userService.insertUser(user);}
+    @GetMapping("/add")
+    private AppResponse<User> addUser(User user){
+        return userService.addUser(user);
+    }
 
     @GetMapping("/check")
-    private AppResponse<User> checkPswByAccount(User user){return  userService.checkUser(user);}
+    private AppResponse<User> checkPswByAccount(User user){
+        return  userService.checkUser(user);
+    }
 }

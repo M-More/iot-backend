@@ -4,6 +4,6 @@ import com.it.iotplatform.model.AppResponse;
 import com.it.iotplatform.model.User;
 
 public interface UserService {
-    public AppResponse insertUser(User user);
+    public AppResponse<User> addUser(User user);
     public AppResponse checkUser(User user);
 }

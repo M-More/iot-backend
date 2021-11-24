@@ -8,8 +8,8 @@ import java.util.List;
 @Mapper
 public interface SupplierMapper {
     List<Supplier> getAllSupplier();
-    List<Supplier> findSupplierByNameOrCode(Supplier supplier);
-    Integer insertSupplier(Supplier supplier);
+    List<Supplier> getSupplierByNameOrCode(Supplier supplier);
+    Integer addSupplier(Supplier supplier);
     Integer updateSupplier(Supplier supplier);
     Integer deleteSupplier(Supplier supplier);
 }
