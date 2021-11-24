@@ -27,7 +27,7 @@
             #{alarmCode},
             #{alarmLevel},
             #{deviceTypeName},
-            #{status},
+            #{alarmStatus},
             #{ruleDescription}
         );
     </insert>
@@ -36,7 +36,7 @@
         set alarmName = #{alarmName},
             alarmLevel = #{alarmLevel},
             deviceTypeName = #{deviceTypeName},
-            status = #{status},
+            alarmStatus = #{alarmStatus},
             ruleDescription = #{ruleDescription}
         where alarmCode = #{alarmCode};
     </update>
