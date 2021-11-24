@@ -1,7 +1,11 @@
 package com.it.iotplatform.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.it.iotplatform.mapper.AlarmMapper;
 import com.it.iotplatform.model.Alarm;
+import com.it.iotplatform.model.AppResponse;
+import com.it.iotplatform.model.EventConfig;
 import com.it.iotplatform.service.AlarmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,28 +22,59 @@ public class AlarmServiceImpl implements AlarmService {
     }
 
     @Override
-    public List<Alarm> getAllAlarm() {
-        return alarmMapper.getAllAlarm();
+    public AppResponse<Alarm> getAllAlarm(Alarm alarm) {
+        PageHelper.startPage(alarm.getPage(), alarm.getPageSize());
+        List<Alarm> alarmList = alarmMapper.getAllAlarm();
+        PageInfo<Alarm> pageInfo = new PageInfo<>(alarmList);
+        return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.SUCCESS, pageInfo);
     }
 
     @Override
-    public List<Alarm> findAlarmByCondition(Alarm alarm) {
-        return alarmMapper.findAlarmByCondition(alarm);
+    public List<Alarm> getAlarmByCondition(Alarm alarm) {
+        return alarmMapper.getAlarmByCondition(alarm);
     }
 
     @Override
-    public String insertAlarm(Alarm alarm) {
-        return alarmMapper.insertAlarm(alarm).toString();
+    public AppResponse<Alarm> addAlarm(Alarm alarm) {
+        try {
+            alarmMapper.addAlarm(alarm);
+            return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.SUCCESS);
+        }
+        catch (Exception e) {
+            return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.FAILURE);
+        }
     }
 
     @Override
-    public String updateAlarm(Alarm alarm) {
-        return alarmMapper.updateAlarm(alarm).toString();
+    public AppResponse<Alarm> updateAlarm(Alarm alarm) {
+        try {
+            int response = alarmMapper.updateAlarm(alarm);
+            if (response == 0) {
+                return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.FAILURE);
+            }
+            else {
+                return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.SUCCESS);
+            }
+        }
+        catch (Exception e) {
+            return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.FAILURE);
+        }
     }
 
     @Override
-    public String deleteAlarm(Alarm alarm) {
-        return alarmMapper.deleteAlarm(alarm).toString();
+    public AppResponse<Alarm> deleteAlarm(Alarm alarm) {
+        try {
+            int response = alarmMapper.deleteAlarm(alarm);
+            if (response == 0) {
+                return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.FAILURE);
+            }
+            else {
+                return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.SUCCESS);
+            }
+        }
+        catch (Exception e) {
+            return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.FAILURE);
+        }
     }
 
     @Override

@@ -17,9 +17,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public AppResponse<User> insertUser(User user) {
+    public AppResponse<User> addUser(User user) {
         try {
-            userMapper.insertUser(user);
+            userMapper.addUser(user);
             return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.SUCCESS);
         }
         catch (Exception e){
@@ -37,8 +37,7 @@ public class UserServiceImpl implements UserService {
         catch (Exception e){
             return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.FAILURE);
         }
-        System.out.println(psw);
-        System.out.println(user.getUserPassword());
+
         if (psw == null){
             return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.ACCOUNT_NOT_EXIST);
         }

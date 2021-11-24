@@ -1,6 +1,10 @@
 package com.it.iotplatform.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.it.iotplatform.mapper.SupplierMapper;
+import com.it.iotplatform.model.AppResponse;
+import com.it.iotplatform.model.Supplier;
 import com.it.iotplatform.model.Supplier;
 import com.it.iotplatform.service.SupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,25 +23,58 @@ public class SupplierServiceImpl implements SupplierService {
     }
 
     @Override
-    public List<Supplier> getAllSupplier() {return supplierMapper.getAllSupplier();}
-
-    @Override
-    public List<Supplier> findSupplierByNameOrCode(Supplier supplier) {
-        return supplierMapper.findSupplierByNameOrCode(supplier);
+    public AppResponse<Supplier> getAllSupplier(Supplier supplier) {
+        PageHelper.startPage(supplier.getPage(), supplier.getPageSize());
+        List<Supplier> supplierList = supplierMapper.getAllSupplier();
+        PageInfo<Supplier> pageInfo = new PageInfo<>(supplierList);
+        return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.SUCCESS, pageInfo);
     }
 
     @Override
-    public String insertSupplier(Supplier supplier) {
-        return supplierMapper.insertSupplier(supplier).toString();
+    public List<Supplier> getSupplierByNameOrCode(Supplier supplier) {
+        return supplierMapper.getSupplierByNameOrCode(supplier);
     }
 
     @Override
-    public String updateSupplier(Supplier supplier) {
-        return supplierMapper.updateSupplier(supplier).toString();
+    public AppResponse<Supplier> addSupplier(Supplier supplier) {
+        try {
+            supplierMapper.addSupplier(supplier);
+            return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.SUCCESS);
+        }
+        catch (Exception e) {
+            return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.FAILURE);
+        }
     }
 
     @Override
-    public String deleteSupplier(Supplier supplier) {
-        return supplierMapper.deleteSupplier(supplier).toString();
+    public AppResponse<Supplier> deleteSupplier(Supplier supplier) {
+        try {
+            int response = supplierMapper.deleteSupplier(supplier);
+            if (response == 0) {
+                return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.FAILURE);
+            }
+            else {
+                return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.SUCCESS);
+            }
+        }
+        catch (Exception e) {
+            return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.FAILURE);
+        }
+    }
+
+    @Override
+    public AppResponse<Supplier> updateSupplier(Supplier supplier) {
+        try {
+            int response = supplierMapper.updateSupplier(supplier);
+            if (response == 0) {
+                return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.FAILURE);
+            }
+            else {
+                return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.SUCCESS);
+            }
+        }
+        catch (Exception e) {
+            return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.FAILURE);
+        }
     }
 }

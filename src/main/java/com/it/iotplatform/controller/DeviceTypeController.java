@@ -1,15 +1,13 @@
 package com.it.iotplatform.controller;
 
+import com.it.iotplatform.model.AppResponse;
 import com.it.iotplatform.model.DeviceType;
-import com.it.iotplatform.response.Response;
 import com.it.iotplatform.service.DeviceTypeService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/deviceType")
 public class DeviceTypeController {
@@ -24,23 +22,23 @@ public class DeviceTypeController {
         return deviceTypeService.getAllDeviceType();
     }
 
-    @PostMapping(value ="/addDeviceType")
-    public Response<DeviceType> addDeviceType(DeviceType deviceType){
+    @PostMapping(value ="/add")
+    public AppResponse<DeviceType> addDeviceType(DeviceType deviceType) {
         return deviceTypeService.addDeviceType(deviceType);
     }
 
-    @PostMapping(value ="/deleteDeviceType")
-    public Response<DeviceType> deleteDeviceType(String deviceTypeCode){
+    @PostMapping(value ="/delete")
+    public AppResponse<DeviceType> deleteDeviceType(String deviceTypeCode) {
         return deviceTypeService.deleteDeviceType(deviceTypeCode);
     }
 
-    @PostMapping(value ="/modifyDeviceType")
-    public Response<DeviceType> modifyDeviceType(DeviceType deviceType){
-        return deviceTypeService.modifyDeviceType(deviceType);
+    @PostMapping(value ="/update")
+    public AppResponse<DeviceType> updateDeviceType(DeviceType deviceType) {
+        return deviceTypeService.updateDeviceType(deviceType);
     }
 
-    @GetMapping(value ="/getDeviceType")
-    public Response<DeviceType> getDeviceType(String deviceTypeCode){
+    @GetMapping(value ="/getBy")
+    public DeviceType getDeviceType(String deviceTypeCode){
         return deviceTypeService.getDeviceType(deviceTypeCode);
     }
 }

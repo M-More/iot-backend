@@ -8,8 +8,8 @@ import java.util.List;
 @Mapper
 public interface AlarmMapper {
     List<Alarm> getAllAlarm();
-    List<Alarm> findAlarmByCondition(Alarm alarm);
-    Integer insertAlarm(Alarm alarm);
+    List<Alarm> getAlarmByCondition(Alarm alarm);
+    Boolean addAlarm(Alarm alarm);
     Integer updateAlarm(Alarm alarm);
     Integer deleteAlarm(Alarm alarm);
     List<String> getAlarmNameByDeviceType(Alarm alarm);

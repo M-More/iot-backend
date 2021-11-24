@@ -4,10 +4,6 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.it.iotplatform.mapper.DeviceTypeMapper">
 
-    <resultMap id="deviceTypeResultMap" type="com.it.iotplatform.model.DeviceType" autoMapping="true">
-        <id property="deviceTypeCode" column="deviceTypeCode"/>
-        <result property="deviceTypeName" column="deviceTypeName" />
-    </resultMap>
     <insert id="addDeviceType" parameterType="com.it.iotplatform.model.DeviceType" useGeneratedKeys="true">
         INSERT INTO DeviceType
         (deviceTypeCode,
@@ -30,7 +26,7 @@
         DELETE from DeviceType where deviceTypeCode=#{deviceTypeCode}
     </delete>
 
-    <select id="getDeviceType" parameterType="String" resultMap="deviceTypeResultMap">
+    <select id="getDeviceType" parameterType="String" resultType="com.it.iotplatform.model.DeviceType">
         select * from (select * from DeviceType ORDER BY #{updateTime} DESC, #{createTime} DESC)
         where deviceTypeCode like concat('%', #{deviceTypeCode}, '%')
     </select>

@@ -1,5 +1,6 @@
 package com.it.iotplatform.controller;
 
+import com.it.iotplatform.model.AppResponse;
 import com.it.iotplatform.model.Supplier;
 import com.it.iotplatform.service.SupplierService;
 import org.apache.ibatis.annotations.Param;
@@ -22,13 +23,23 @@ public class SupplierController {
     }
 
     @GetMapping("/getAll")
-    private List<Supplier> getAllSupplier(){return supplierService.getAllSupplier();}
-    @GetMapping("/findBy")
-    private List<Supplier> findSupplierByName(Supplier supplier){return supplierService.findSupplierByNameOrCode(supplier);}
-    @GetMapping("/insert")
-    private String insertSupplier(Supplier supplier){return supplierService.insertSupplier(supplier);}
-    @GetMapping("/update")
-    private String updateSupplier(Supplier supplier){return supplierService.updateSupplier(supplier);}
-    @GetMapping("/delete")
-    private String deleteSupplier(Supplier supplier){return supplierService.deleteSupplier(supplier);}
+    private AppResponse<Supplier> getAllSupplier(Supplier supplier){
+        return supplierService.getAllSupplier(supplier);
+    }
+    @GetMapping("/getBy")
+    private List<Supplier> getSupplierByName(Supplier supplier){
+        return supplierService.getSupplierByNameOrCode(supplier);
+    }
+    @PostMapping("/add")
+    private AppResponse<Supplier> insertSupplier(Supplier supplier){
+        return supplierService.addSupplier(supplier);
+    }
+    @PostMapping("/update")
+    private AppResponse<Supplier> updateSupplier(Supplier supplier){
+        return supplierService.updateSupplier(supplier);
+    }
+    @PostMapping("/delete")
+    private AppResponse<Supplier> deleteSupplier(Supplier supplier){
+        return supplierService.deleteSupplier(supplier);
+    }
 }

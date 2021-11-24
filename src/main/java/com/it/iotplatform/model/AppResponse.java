@@ -65,6 +65,10 @@ public class AppResponse<T> {
          */
         REPEAT_ACTION(12,"重复操作"),
         /**
+         * 15:查询失败
+         */
+        QUERY_FAILURE(12,"查询失败"),
+        /**
          * 111:ip已被禁用
          */
         IP_BANNED(111,"ip已被禁用"),

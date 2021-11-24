@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Alarm {
+public class Alarm extends BaseModel{
     private String alarmName;
     private String alarmCode;
     private String alarmLevel;
