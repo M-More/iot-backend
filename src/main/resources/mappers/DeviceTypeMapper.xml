@@ -8,10 +8,17 @@
         INSERT INTO DeviceType
         (deviceTypeCode,
          deviceTypeName,
+         createUser,
+         updateUser,
+         state
          )
         VALUES
             (#{deviceTypeCode},
-             #{deviceTypeName})
+             #{deviceTypeName},
+             #{createUser},
+             #{createUser},
+             1
+             )
     </insert>
 
     <update id="updateDeviceType" parameterType="com.it.iotplatform.model.DeviceType">
@@ -19,6 +26,7 @@
         SET
             deviceTypeCode=#{deviceTypeCode},
             deviceTypeName=#{deviceTypeName},
+            updateUser=#{updateUser}
         where deviceTypeCode=#{deviceTypeCode}
     </update>
 

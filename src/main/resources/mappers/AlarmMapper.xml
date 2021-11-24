@@ -21,14 +21,17 @@
         where deviceTypeName = #{deviceTypeName}
     </select>
     <insert id="addAlarm" parameterType="com.it.iotplatform.model.Alarm">
-        insert into alarm(alarmName,alarmCode,alarmLevel,deviceTypeName,status,ruleDescription)
+        insert into alarm(alarmName,alarmCode,alarmLevel,deviceTypeName,status,ruleDescription,createUser,updateUser,state)
         value (
             #{alarmName},
             #{alarmCode},
             #{alarmLevel},
             #{deviceTypeName},
             #{alarmStatus},
-            #{ruleDescription}
+            #{ruleDescription},
+            #{createUser},
+            #{createUser},
+            1
         );
     </insert>
     <update id="updateAlarm" parameterType="com.it.iotplatform.model.Alarm">
@@ -37,7 +40,8 @@
             alarmLevel = #{alarmLevel},
             deviceTypeName = #{deviceTypeName},
             alarmStatus = #{alarmStatus},
-            ruleDescription = #{ruleDescription}
+            ruleDescription = #{ruleDescription},
+            updateUser = #{updateUser}
         where alarmCode = #{alarmCode};
     </update>
     <delete id="deleteAlarm" parameterType="com.it.iotplatform.model.Alarm">

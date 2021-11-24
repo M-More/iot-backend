@@ -14,14 +14,17 @@
         or supplierCode like CONCAT(#{supplierCode},'%')
     </select>
     <insert id="addSupplier" parameterType="com.it.iotplatform.model.Supplier">
-        insert into supplier(supplierName,supplierCode,contactTel,contactName,address,note)
+        insert into supplier(supplierName,supplierCode,contactTel,contactName,address,note,createUser,updateUser,state)
         value (
             #{supplierName},
             #{supplierCode},
             #{contactTel},
             #{contactName},
             #{address},
-            #{note}
+            #{note},
+            #{createUser},
+            #{createUser},
+            1
         );
     </insert>
     <update id="updateSupplier" parameterType="com.it.iotplatform.model.Supplier">
@@ -30,7 +33,8 @@
             contactTel = #{contactTel},
             contactName = #{contactName},
             address = #{address},
-            note = #{note}
+            note = #{note},
+            updateUser = #{updateUser}
         where supplierCode = #{supplierCode};
     </update>
     <delete id="deleteSupplier" parameterType="com.it.iotplatform.model.Supplier">
