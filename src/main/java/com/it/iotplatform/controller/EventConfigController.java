@@ -25,7 +25,7 @@ public class EventConfigController {
         return eventConfigService.getAllEventConfig(eventConfig);
     }
 
-    @GetMapping("/getById")
+    @GetMapping("/getBy")
     private EventConfig  getEventConfigById(String eventConfigId) {
         return eventConfigService.getEventConfigById(eventConfigId);
     }

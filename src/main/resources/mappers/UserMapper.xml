@@ -8,7 +8,7 @@
         FROM user
         WHERE userAccount = #{userAccount}
     </select>
-    <insert id="insertUser" parameterType="com.it.iotplatform.model.User">
+    <insert id="addUser" parameterType="com.it.iotplatform.model.User">
         INSERT INTO user(userId, userName, userAccount, userPassword, userEmail, userJobNumber)
         VALUE (REPLACE(UUID(),"-",""),
             #{userName},

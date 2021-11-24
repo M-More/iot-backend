@@ -7,7 +7,7 @@
         select *
         from alarm
     </select>
-    <select id="findAlarmByCondition" resultType="com.it.iotplatform.model.Alarm">
+    <select id="getAlarmByCondition" resultType="com.it.iotplatform.model.Alarm">
         select *
         from alarm
         where (alarmLevel = #{alarmLevel}
@@ -20,7 +20,7 @@
         from alarm
         where deviceTypeName = #{deviceTypeName}
     </select>
-    <insert id="insertAlarm" parameterType="com.it.iotplatform.model.Alarm">
+    <insert id="addAlarm" parameterType="com.it.iotplatform.model.Alarm">
         insert into alarm(alarmName,alarmCode,alarmLevel,deviceTypeName,status,ruleDescription)
         value (
             #{alarmName},

@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Supplier {
+public class Supplier extends BaseModel{
     private String supplierName;
     private String supplierCode;
     private String contactTel;
