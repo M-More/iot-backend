@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.iotplatform.mapper.EventLogMapper">
+    <select id="getEventLogById" resultType="com.it.iotplatform.model.EventLog">
+        SELECT *
+        FROM eventLog
+        WHERE eventInfoId = #{eventInfoId}
+    </select>
+
+    <select id="getAllEventLog" resultType="com.it.iotplatform.model.EventLog">
+        SELECT *
+        FROM eventLog
+    </select>
+
+    <insert id="addEventLog" parameterType="com.it.iotplatform.model.EventLog">
+        INSERT INTO eventLog(eventInfoId, date, processStatus, staff, action)
+            VALUE (#{eventInfoId},
+            #{date},
+            #{processStatus},
+            #{staff},
+            #{action},
+            );
+    </insert>
+</mapper>

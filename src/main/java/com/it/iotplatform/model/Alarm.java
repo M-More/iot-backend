@@ -14,6 +14,6 @@ public class Alarm extends BaseModel{
     private String alarmCode;
     private String alarmLevel;
     private String deviceTypeName;
-    private String status;
+    private String alarmStatus;
     private String ruleDescription;
 }
