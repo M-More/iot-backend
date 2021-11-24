@@ -3,6 +3,11 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.it.iotplatform.mapper.UserMapper">
+    <select id="getPhoneByName" parameterType="string" resultType="string">
+        SELECT userPhone
+        FROM user
+        WHERE userName = #{userName}
+    </select>
     <select id="getUserPswByAccount" parameterType="com.it.iotplatform.model.User" resultType="string">
         SELECT userPassword
         FROM user
@@ -15,7 +20,8 @@
             #{userAccount},
             #{userPassword},
             #{userEmail},
-            #{userJobNumber}
-            );
+            #{userJobNumber},
+            #{userPhone}
+            )
     </insert>
 </mapper>

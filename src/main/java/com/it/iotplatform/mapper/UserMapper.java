@@ -7,5 +7,6 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface UserMapper {
     AppResponse<User> addUser(User user);
-    String getUserPswByAccount(User user);
+    String getUserPswByAccount(String userAccount);
+    String getPhoneByName(String userName);
 }

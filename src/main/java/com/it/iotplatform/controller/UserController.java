@@ -30,4 +30,9 @@ public class UserController {
     private AppResponse<User> checkPswByAccount(User user){
         return  userService.checkUser(user);
     }
+
+    @GetMapping("/getphone")
+    private String getPhoneByName(String userName){
+        return userService.getPhone(userName);
+    }
 }
