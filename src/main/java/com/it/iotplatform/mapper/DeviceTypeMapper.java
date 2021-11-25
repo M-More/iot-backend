@@ -10,7 +10,7 @@ public interface DeviceTypeMapper {
     boolean addDeviceType(DeviceType deviceType);
     Integer updateDeviceType(DeviceType deviceType);
     Integer deleteDeviceTypeById(String deviceTypeCode);
-    DeviceType getDeviceType(String deviceTypeCode);
-    List<String> getAllDeviceType();
-    List<DeviceType> getDeviceTypeByDeviceTypeName(String deviceTypeName);
+    List<DeviceType> getAllDeviceType(DeviceType deviceType);
+    List<String> getAllDeviceTypeName();
+    List<DeviceType> getDeviceTypeBy(DeviceType deviceType);
 }

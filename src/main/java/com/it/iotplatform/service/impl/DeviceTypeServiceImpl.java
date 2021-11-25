@@ -1,8 +1,11 @@
 package com.it.iotplatform.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.it.iotplatform.mapper.DeviceTypeMapper;
 import com.it.iotplatform.model.AppResponse;
 import com.it.iotplatform.model.DeviceType;
+import com.it.iotplatform.model.EventConfig;
 import com.it.iotplatform.service.DeviceTypeService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -61,18 +64,21 @@ public class DeviceTypeServiceImpl implements DeviceTypeService {
     }
 
     @Override
-    public DeviceType getDeviceType(String deviceTypeCode) {
-        return deviceTypeMapper.getDeviceType(deviceTypeCode);
+    public List<String> getAllDeviceTypeName() {
+        return deviceTypeMapper.getAllDeviceTypeName();
     }
 
     @Override
-    public List<String> getAllDeviceType() {
-        return deviceTypeMapper.getAllDeviceType();
+    public AppResponse<DeviceType> getAllDeviceType(DeviceType deviceType) {
+        PageHelper.startPage(deviceType.getPage(), deviceType.getPageSize());
+        List<DeviceType> eventConfigList = deviceTypeMapper.getAllDeviceType(deviceType);
+        PageInfo<DeviceType> pageInfo = new PageInfo<>(eventConfigList);
+        return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.SUCCESS, pageInfo);
     }
 
     @Override
-    public List<DeviceType> getDeviceTypeByDeviceTypeName(String deviceTypeName) {
-        return deviceTypeMapper.getDeviceTypeByDeviceTypeName(deviceTypeName);
+    public List<DeviceType> getDeviceTypeBy(DeviceType deviceType) {
+        return deviceTypeMapper.getDeviceTypeBy(deviceType);
     }
 }
 
