@@ -79,7 +79,7 @@ public class EventInfoServiceImpl implements EventInfoService {
     @Override
     public AppResponse<EventInfo> addEventInfo(DeviceAlarm deviceAlarm) {
         System.out.println(deviceAlarm.getDeviceNumber());
-        DeviceInfo deviceInfo = deviceInfoMapper.getDeviceInfo(deviceAlarm.getDeviceNumber()).get(0);
+        DeviceInfo deviceInfo = deviceInfoMapper.getDeviceInfoByDeviceNumber(deviceAlarm.getDeviceNumber()).get(0);
         EventConfig eventConfig = new EventConfig();
         eventConfig.setDeviceTypeName(deviceInfo.getDeviceTypeName());
         eventConfig.setAlarmName(deviceAlarm.getAlarmName());
@@ -90,7 +90,7 @@ public class EventInfoServiceImpl implements EventInfoService {
             eventInfo.setEventName(eventConfig.getEventName());
             eventInfo.setEventInfoStatus("未处理");
             eventInfo.setEventInfoResource(deviceAlarm.getEventInfoResource());
-            eventInfo.setAlarmFrequency(1);
+            eventInfo.setAlarmFrequencey(1);
             eventInfo.setEventInfoOccurenceTime(deviceAlarm.getEventInfoOccurenceTime());
             eventInfo.setEventInfoDescription(deviceAlarm.getEventInfoDescription());
             eventInfo.setEventLevel(eventConfig.getEventLevel());
@@ -102,6 +102,10 @@ public class EventInfoServiceImpl implements EventInfoService {
             eventInfo.setCreateUser("默认");
             eventInfo.setUpdateUser(null);
             eventInfo.setState(1);
+            int eventInfoId = eventInfoMapper.addEventInfo(eventInfo);
+            EventLog eventLog = new EventLog
+                    (eventInfo.getEventInfoId(), eventInfo.getEventInfoOccurenceTime(), "未处理", "", "事件产生");
+            eventLogMapper.addEventLog(eventLog);
             return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.SUCCESS);
         }
         else {

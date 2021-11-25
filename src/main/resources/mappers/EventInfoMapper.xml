@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.it.iotplatform.mapper.EventInfoMapper">
-    <insert id="addEventInfo" parameterType="com.it.iotplatform.model.EventInfo">
+    <insert id="addEventInfo" useGeneratedKeys="true" keyProperty="eventInfoId" parameterType="com.it.iotplatform.model.EventInfo">
         INSERT INTO eventInfo(eventName, eventInfoStatus, eventInfoResource, alarmFrequencey,
                               eventInfoOccurenceTime, eventInfoDescription, eventLevel,
                               deviceNumber,deviceTypeName,deviceStatus,addressDescription,
@@ -12,6 +12,9 @@
                 #{eventInfoOccurenceTime}, #{eventInfoDescription}, #{eventLevel},
                 #{deviceNumber}, #{deviceTypeName}, #{deviceStatus}, #{addressDescription},
                 #{installDate}, #{createUser}, #{updateUser}, #{state});
+        <selectKey keyProperty="eventInfoId" resultType="java.lang.Integer">
+            select LAST_INSERT_ID() as id
+        </selectKey>
     </insert>
     <select id="getAllEventInfo" resultType="com.it.iotplatform.model.EventInfo">
         select *

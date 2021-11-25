@@ -12,8 +12,8 @@ import java.util.Date;
 @Getter
 @Setter
 public class EventLog {
-    private String eventInfoId;
-    private Date date;
+    private int eventInfoId;
+    private String date;
     private String processStatus;
     private String staff;
     private String action;

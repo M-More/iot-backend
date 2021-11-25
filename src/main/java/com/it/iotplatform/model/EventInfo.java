@@ -9,11 +9,11 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 public class EventInfo extends BaseModel{
-    private String eventInfoId;
+    private int eventInfoId;
     private String eventName;
     private String eventInfoStatus;
     private String eventInfoResource;
-    private int alarmFrequency;
+    private int alarmFrequencey;
     private String eventInfoOccurenceTime;
     private String eventInfoDescription;
     private String eventLevel;
