@@ -61,8 +61,8 @@ public class DeviceInfoServiceImpl implements DeviceInfoService {
     }
 
     @Override
-    public List<DeviceInfo> getDeviceInfo(String deviceNumber) {
-        return deviceInfoMapper.getDeviceInfo(deviceNumber);
+    public List<DeviceInfo> getDeviceInfo(DeviceInfo deviceInfo) {
+        return deviceInfoMapper.getDeviceInfo(deviceInfo);
     }
 
     @Override
@@ -97,6 +97,11 @@ public class DeviceInfoServiceImpl implements DeviceInfoService {
     @Override
     public List<DeviceInfo> getDeviceInfoByDeviceStatus(String deviceStatus) {
         return deviceInfoMapper.getDeviceInfoByDeviceStatus(deviceStatus);
+    }
+
+    @Override
+    public List<DeviceInfo> getDeviceInfoByDeviceNumber(String deviceNumber) {
+        return deviceInfoMapper.getDeviceInfoByDeviceNumber(deviceNumber);
     }
 
 

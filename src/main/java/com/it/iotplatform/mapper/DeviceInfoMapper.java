@@ -10,9 +10,10 @@ public interface DeviceInfoMapper {
     boolean addDeviceInfo(DeviceInfo deviceInfo);
     Integer updateDeviceInfo(DeviceInfo deviceInfo);
     Integer deleteDeviceInfoById(String deviceNumber);
-    List<DeviceInfo> getDeviceInfo(String deviceNumber);
+    List<DeviceInfo> getDeviceInfo(DeviceInfo deviceInfo);
     List<DeviceInfo> getAllDeviceInfo();
     List<DeviceInfo> getDeviceInfoByDeviceTypeName(String deviceTypeName);
     Integer updateDeviceStatusWhileEventOccur(DeviceInfo deviceInfo);
     List<DeviceInfo> getDeviceInfoByDeviceStatus(String deviceStatus);
+    List<DeviceInfo> getDeviceInfoByDeviceNumber(String deviceNumber);
 }

@@ -73,7 +73,7 @@
         DELETE from DeviceInfo where deviceNumber=#{deviceNumber}
     </delete>
 
-    <select id="getDeviceInfo" parameterType="string" resultType="com.it.iotplatform.model.DeviceInfo">
+    <select id="getDeviceInfo" parameterType="com.it.iotplatform.model.DeviceInfo" resultType="com.it.iotplatform.model.DeviceInfo">
         select * from user where state = 1
         <if test="deviceTypeName != null">
             and deviceTypeName like concat('%',#{deviceTypeName},'%')
@@ -100,5 +100,11 @@
         SELECT *
         FROM deviceInfo
         WHERE deviceStatus = #{deviceStatus}
+    </select>
+    
+    <select id="getDeviceInfoByDeviceNumber" parameterType="string" resultType="com.it.iotplatform.model.DeviceInfo">
+        SELECT *
+        FROM deviceInfo
+        WHERE deviceNumber = #{deviceNumber}
     </select>
 </mapper>
