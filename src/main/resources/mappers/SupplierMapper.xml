@@ -7,6 +7,12 @@
         select *
         from supplier
     </select>
+
+    <select id="getAllSupplierName" resultType="String">
+        select supplierName
+        from supplier
+    </select>
+
     <select id="getSupplierByNameOrCode" resultType="com.it.iotplatform.model.Supplier">
         select *
         from supplier
@@ -15,6 +21,7 @@
             <if test="supplierCode != null and supplierCode != ''">or supplierCode like CONCAT(#{supplierCode},'%')</if>
         </where>
     </select>
+
     <insert id="addSupplier" parameterType="com.it.iotplatform.model.Supplier">
         insert into supplier(supplierName,supplierCode,contactTel,contactName,address,note,createUser,updateUser,state)
         value (

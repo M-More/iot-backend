@@ -30,6 +30,11 @@ public class SupplierServiceImpl implements SupplierService {
     }
 
     @Override
+    public List<String> getAllSupplierName() {
+        return supplierMapper.getAllSupplierName();
+    }
+
+    @Override
     public List<Supplier> getSupplierByNameOrCode(Supplier supplier) {
         return supplierMapper.getSupplierByNameOrCode(supplier);
     }
