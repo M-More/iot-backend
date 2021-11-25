@@ -13,4 +13,5 @@ public interface EventConfigMapper {
     boolean addEventConfig(EventConfig eventConfig);
     Integer deleteEventConfigById(String eventConfigId);
     Integer updateEventConfig(EventConfig eventConfig);
+    List<EventConfig> getEventConfigByDeviceTypeNameAndAlarmName(EventConfig eventConfig);
 }

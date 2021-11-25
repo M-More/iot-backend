@@ -16,6 +16,11 @@
         from eventConfig
         where eventConfigId=#{eventConfigId}
     </select>
+    <select id="getEventConfigByDeviceTypeNameAndAlarmName" resultType="com.it.iotplatform.model.EventConfig">
+        select *
+        from eventConfig
+        where deviceTypeName=#{deviceTypeName} AND alarmName LIKE concat('%', #{alarmName}, '%')
+    </select>
     <insert id="addEventConfig" parameterType="com.it.iotplatform.model.EventConfig" useGeneratedKeys="true">
         insert into eventConfig(eventName, notificationDescription, eventLevel, deviceTypeName, alarmName, createUser, updateUser, state)
         values (#{eventName}, #{notificationDescription}, #{eventLevel}, #{deviceTypeName}, #{alarmName}, #{createUser}, #{createUser}, "1")

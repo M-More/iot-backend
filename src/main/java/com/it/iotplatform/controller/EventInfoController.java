@@ -1,9 +1,6 @@
 package com.it.iotplatform.controller;
 
-import com.it.iotplatform.model.AppResponse;
-import com.it.iotplatform.model.EventInfo;
-import com.it.iotplatform.model.EventLog;
-import com.it.iotplatform.model.EventStat;
+import com.it.iotplatform.model.*;
 import com.it.iotplatform.service.EventInfoService;
 import com.it.iotplatform.service.EventLogService;
 import org.springframework.web.bind.annotation.*;
@@ -50,5 +47,10 @@ public class EventInfoController {
     @PostMapping(value = "/addLog")
     public AppResponse<EventLog> addEventLog(EventLog eventLog) {
         return eventLogService.addEventLog(eventLog);
+    }
+
+    @PostMapping(value = "/alarm")
+    public AppResponse<EventInfo> addEventInfo(DeviceAlarm deviceAlarm) {
+        return eventInfoService.addEventInfo(deviceAlarm);
     }
 }

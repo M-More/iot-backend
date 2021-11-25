@@ -10,7 +10,7 @@ import java.util.List;
 @Mapper
 public interface EventInfoMapper {
     List<EventInfo> getAllEventInfo(EventInfo eventInfo);
-    boolean addEventInfo(EventInfo eventInfo);
+    Integer addEventInfo(EventInfo eventInfo);
     Integer updateEventInfo(EventInfo eventInfo);
     EventStat getEventStat();
 }

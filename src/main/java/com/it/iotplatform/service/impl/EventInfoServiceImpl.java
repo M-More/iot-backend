@@ -3,6 +3,7 @@ package com.it.iotplatform.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.it.iotplatform.mapper.DeviceInfoMapper;
+import com.it.iotplatform.mapper.EventConfigMapper;
 import com.it.iotplatform.mapper.EventInfoMapper;
 import com.it.iotplatform.mapper.EventLogMapper;
 import com.it.iotplatform.model.*;
@@ -18,11 +19,14 @@ public class EventInfoServiceImpl implements EventInfoService {
     private final EventInfoMapper eventInfoMapper;
     private final EventLogMapper eventLogMapper;
     private final DeviceInfoMapper deviceInfoMapper;
+    private final EventConfigMapper eventConfigMapper;
 
-    public EventInfoServiceImpl(EventInfoMapper eventInfoMapper, EventLogMapper eventLogMapper, DeviceInfoMapper deviceInfoMapper) {
+    public EventInfoServiceImpl(EventInfoMapper eventInfoMapper, EventLogMapper eventLogMapper,
+                                DeviceInfoMapper deviceInfoMapper, EventConfigMapper eventConfigMapper) {
         this.eventInfoMapper = eventInfoMapper;
         this.eventLogMapper = eventLogMapper;
         this.deviceInfoMapper = deviceInfoMapper;
+        this.eventConfigMapper = eventConfigMapper;
     }
 
     @Override
@@ -70,5 +74,38 @@ public class EventInfoServiceImpl implements EventInfoService {
     @Override
     public EventStat getEventStat() {
         return eventInfoMapper.getEventStat();
+    }
+
+    @Override
+    public AppResponse<EventInfo> addEventInfo(DeviceAlarm deviceAlarm) {
+        System.out.println(deviceAlarm.getDeviceNumber());
+        DeviceInfo deviceInfo = deviceInfoMapper.getDeviceInfo(deviceAlarm.getDeviceNumber()).get(0);
+        EventConfig eventConfig = new EventConfig();
+        eventConfig.setDeviceTypeName(deviceInfo.getDeviceTypeName());
+        eventConfig.setAlarmName(deviceAlarm.getAlarmName());
+        List<EventConfig> eventConfigList = eventConfigMapper.getEventConfigByDeviceTypeNameAndAlarmName(eventConfig);
+        if (eventConfigList.size() > 0){
+            eventConfig = eventConfigList.get(0);
+            EventInfo eventInfo = new EventInfo();
+            eventInfo.setEventName(eventConfig.getEventName());
+            eventInfo.setEventInfoStatus("未处理");
+            eventInfo.setEventInfoResource(deviceAlarm.getEventInfoResource());
+            eventInfo.setAlarmFrequency(1);
+            eventInfo.setEventInfoOccurenceTime(deviceAlarm.getEventInfoOccurenceTime());
+            eventInfo.setEventInfoDescription(deviceAlarm.getEventInfoDescription());
+            eventInfo.setEventLevel(eventConfig.getEventLevel());
+            eventInfo.setDeviceNumber(deviceInfo.getDeviceNumber());
+            eventInfo.setDeviceTypeName(deviceInfo.getDeviceTypeName());
+            eventInfo.setDeviceStatus("异常");
+            eventInfo.setAddressDescription(deviceInfo.getInstallAddress());
+            eventInfo.setInstallDate(deviceInfo.getInstallDate());
+            eventInfo.setCreateUser("默认");
+            eventInfo.setUpdateUser(null);
+            eventInfo.setState(1);
+            return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.SUCCESS);
+        }
+        else {
+            return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.FAILURE);
+        }
     }
 }
