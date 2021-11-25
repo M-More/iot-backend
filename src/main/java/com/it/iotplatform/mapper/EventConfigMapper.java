@@ -8,7 +8,7 @@ import java.util.List;
 
 @Mapper
 public interface EventConfigMapper {
-    List<EventConfig> getAllEventConfig();
+    List<EventConfig> getAllEventConfig(EventConfig eventConfig);
     EventConfig getEventConfigById(String eventConfigId);
     boolean addEventConfig(EventConfig eventConfig);
     Integer deleteEventConfigById(String eventConfigId);

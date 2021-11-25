@@ -23,7 +23,7 @@ public class EventConfigServiceImpl implements EventConfigService {
     @Override
     public AppResponse<EventConfig> getAllEventConfig(EventConfig eventConfig) {
         PageHelper.startPage(eventConfig.getPage(), eventConfig.getPageSize());
-        List<EventConfig> eventConfigList = eventConfigMapper.getAllEventConfig();
+        List<EventConfig> eventConfigList = eventConfigMapper.getAllEventConfig(eventConfig);
         PageInfo<EventConfig> pageInfo = new PageInfo<>(eventConfigList);
         return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.SUCCESS, pageInfo);
     }

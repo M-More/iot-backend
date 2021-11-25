@@ -25,7 +25,7 @@ public class EventInfoServiceImpl implements EventInfoService {
     @Override
     public AppResponse<EventInfo> getAllEventInfo(EventInfo eventInfo) {
         PageHelper.startPage(eventInfo.getPage(), eventInfo.getPageSize());
-        List<EventInfo> eventConfigList = eventInfoMapper.getAllEventInfo();
+        List<EventInfo> eventConfigList = eventInfoMapper.getAllEventInfo(eventInfo);
         PageInfo<EventInfo> pageInfo = new PageInfo<>(eventConfigList);
         return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.SUCCESS, pageInfo);
     }

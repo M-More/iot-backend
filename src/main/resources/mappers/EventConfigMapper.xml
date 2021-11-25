@@ -6,6 +6,10 @@
     <select id="getAllEventConfig" resultType="com.it.iotplatform.model.EventConfig">
         select *
         from eventConfig
+        <where>
+            <if test="eventLevel != null and eventLevel != ''">eventLevel=#{eventLevel}</if>
+            <if test="eventName != null and eventName != ''">AND eventName LIKE concat('%', #{eventName}, '%')</if>
+        </where>
     </select>
     <select id="getEventConfigById" resultType="com.it.iotplatform.model.EventConfig">
         select *
