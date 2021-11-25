@@ -33,8 +33,8 @@ public class DeviceInfoController {
     }
 
     @GetMapping(value ="/getBy")
-    public List<DeviceInfo> getDeviceInfo(String deviceNumber){
-        return deviceInfoService.getDeviceInfo(deviceNumber);
+    public List<DeviceInfo> getDeviceInfo(DeviceInfo deviceInfo){
+        return deviceInfoService.getDeviceInfo(deviceInfo);
     }
 
     @GetMapping(value ="/getAll")
@@ -52,7 +52,7 @@ public class DeviceInfoController {
         return deviceInfoService.getAllDeviceInfoNoPage();
     }
 
-    @GetMapping(value = "getByStatus")
+    @GetMapping(value = "/getByStatus")
     public List<DeviceInfo> getDeviceInfoByDeviceStatus(String deviceStatus){
         return deviceInfoService.getDeviceInfoByDeviceStatus(deviceStatus);
     }
@@ -60,5 +60,10 @@ public class DeviceInfoController {
     @PostMapping(value ="/updatestatus")
     public AppResponse<DeviceInfo> updateDeviceStatusWhileEventOccur(DeviceInfo deviceInfo){
         return deviceInfoService.updateDeviceStatusWhileEventOccur(deviceInfo);
+    }
+
+    @GetMapping(value = "/getByNumber")
+    public List<DeviceInfo> getDeviceInfoByDeviceNumber(String deviceNumber){
+        return deviceInfoService.getDeviceInfoByDeviceNumber(deviceNumber);
     }
 }
