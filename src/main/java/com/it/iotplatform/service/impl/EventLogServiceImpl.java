@@ -19,11 +19,11 @@ public class EventLogServiceImpl implements EventLogService {
         this.eventLogMapper = eventLogMapper;
     }
 
-
     @Override
     public List<EventLog> getAllEventLog() {
         return eventLogMapper.getAllEventLog();
     }
+
 
     @Override
     public List<EventLog> getEventLogById(String eventInfoId) {
