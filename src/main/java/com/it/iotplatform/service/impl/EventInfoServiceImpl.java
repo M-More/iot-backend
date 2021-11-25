@@ -2,6 +2,7 @@ package com.it.iotplatform.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.it.iotplatform.mapper.DeviceInfoMapper;
 import com.it.iotplatform.mapper.EventInfoMapper;
 import com.it.iotplatform.mapper.EventLogMapper;
 import com.it.iotplatform.model.*;
@@ -16,10 +17,12 @@ public class EventInfoServiceImpl implements EventInfoService {
     @Autowired
     private final EventInfoMapper eventInfoMapper;
     private final EventLogMapper eventLogMapper;
+    private final DeviceInfoMapper deviceInfoMapper;
 
-    public EventInfoServiceImpl(EventInfoMapper eventInfoMapper, EventLogMapper eventLogMapper) {
+    public EventInfoServiceImpl(EventInfoMapper eventInfoMapper, EventLogMapper eventLogMapper, DeviceInfoMapper deviceInfoMapper) {
         this.eventInfoMapper = eventInfoMapper;
         this.eventLogMapper = eventLogMapper;
+        this.deviceInfoMapper = deviceInfoMapper;
     }
 
     @Override
@@ -33,6 +36,9 @@ public class EventInfoServiceImpl implements EventInfoService {
     @Override
     public AppResponse<EventInfo> updateEventInfo(EventInfo eventInfo) {
         try {
+            if (eventInfo.getEventInfoStatus().equals("已处理")){
+                eventInfo.setDeviceStatus("正常");
+            }
             int response = eventInfoMapper.updateEventInfo(eventInfo);
             if (response == 0) {
                 return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.FAILURE);
@@ -44,6 +50,10 @@ public class EventInfoServiceImpl implements EventInfoService {
                 }
                 else {
                     action = "事件处理";
+                    DeviceInfo deviceInfo = new DeviceInfo();
+                    deviceInfo.setDeviceNumber(eventInfo.getDeviceNumber());
+                    deviceInfo.setDeviceStatus("正常");
+                    deviceInfoMapper.updateDeviceStatusWhileEventOccur(deviceInfo);
                 }
                 EventLog eventLog = new EventLog
                         (eventInfo.getEventInfoId(), null, eventInfo.getEventInfoStatus(), eventInfo.getUpdateUser(), action);
