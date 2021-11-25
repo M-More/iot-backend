@@ -14,5 +14,6 @@ public class DeviceInfo extends BaseModel{
     @NonNull private String installDate;
     @NonNull private String longitude;
     @NonNull private String latitude;
+    private String deviceStatus;
     private String installAddress;
 }

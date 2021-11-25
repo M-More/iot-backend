@@ -77,5 +77,28 @@ public class DeviceInfoServiceImpl implements DeviceInfoService {
         PageInfo<DeviceInfo> pageInfo = new PageInfo<>(deviceInfoList);
         return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.SUCCESS, pageInfo);
     }
+
+    @Override
+    public List<DeviceInfo> getAllDeviceInfoNoPage() {
+        return deviceInfoMapper.getAllDeviceInfo();
+    }
+
+    @Override
+    public AppResponse<DeviceInfo> updateDeviceStatusWhileEventOccur(DeviceInfo deviceInfo) {
+        try {
+            deviceInfoMapper.updateDeviceStatusWhileEventOccur(deviceInfo);
+            return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.SUCCESS);
+        }
+        catch (Exception e){
+            return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.FAILURE);
+        }
+    }
+
+    @Override
+    public List<DeviceInfo> getDeviceInfoByDeviceStatus(String deviceStatus) {
+        return deviceInfoMapper.getDeviceInfoByDeviceStatus(deviceStatus);
+    }
+
+
 }
 
