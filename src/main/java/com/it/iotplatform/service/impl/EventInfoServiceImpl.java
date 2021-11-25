@@ -3,10 +3,8 @@ package com.it.iotplatform.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.it.iotplatform.mapper.EventInfoMapper;
-import com.it.iotplatform.model.AppResponse;
-import com.it.iotplatform.model.EventConfig;
-import com.it.iotplatform.model.EventInfo;
-import com.it.iotplatform.model.EventStat;
+import com.it.iotplatform.mapper.EventLogMapper;
+import com.it.iotplatform.model.*;
 import com.it.iotplatform.service.EventInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,9 +15,11 @@ import java.util.List;
 public class EventInfoServiceImpl implements EventInfoService {
     @Autowired
     private final EventInfoMapper eventInfoMapper;
+    private final EventLogMapper eventLogMapper;
 
-    public EventInfoServiceImpl(EventInfoMapper eventInfoMapper) {
+    public EventInfoServiceImpl(EventInfoMapper eventInfoMapper, EventLogMapper eventLogMapper) {
         this.eventInfoMapper = eventInfoMapper;
+        this.eventLogMapper = eventLogMapper;
     }
 
     @Override
@@ -38,6 +38,16 @@ public class EventInfoServiceImpl implements EventInfoService {
                 return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.FAILURE);
             }
             else {
+                String action;
+                if (eventInfo.getEventInfoStatus().equals("处理中")){
+                    action = "事件接单";
+                }
+                else {
+                    action = "事件处理";
+                }
+                EventLog eventLog = new EventLog
+                        (eventInfo.getEventInfoId(), null, eventInfo.getEventInfoStatus(), eventInfo.getUpdateUser(), action);
+                eventLogMapper.addEventLog(eventLog);
                 return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.SUCCESS);
             }
         }
