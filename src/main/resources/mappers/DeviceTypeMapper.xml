@@ -45,6 +45,10 @@
 
     <select id="getDeviceTypeByDeviceTypeName" resultType="com.it.iotplatform.model.DeviceType">
         select * from DeviceType
-        where deviceTypeName like concat('%', #{deviceTypeName}, '%')
+        <where>
+            <if test="deviceTypeName != null and deviceTypeName != ''">
+             AND deviceTypeName LIKE concat('%', #{deviceTypeName}, '%')
+            </if>
+        </where>
     </select>
 </mapper>
