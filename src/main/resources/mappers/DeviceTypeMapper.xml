@@ -34,21 +34,23 @@
         DELETE from DeviceType where deviceTypeCode=#{deviceTypeCode}
     </delete>
 
-    <select id="getDeviceType" parameterType="String" resultType="com.it.iotplatform.model.DeviceType">
-        select * from (select * from DeviceType ORDER BY #{updateTime} DESC, #{createTime} DESC)
-        where deviceTypeCode like concat('%', #{deviceTypeCode}, '%')
+    <select id="getDeviceTypeBy" parameterType="com.it.iotplatform.model.DeviceType" resultType="com.it.iotplatform.model.DeviceType">
+        select * from deviceType
+        <where>
+            <if test="deviceTypeName != null and deviceTypeName != ''">
+                deviceTypeName LIKE concat('%', #{deviceTypeName}, '%')
+            </if>
+            <if test="deviceTypeCode != null and deviceTypeCode != ''">
+                OR deviceTypeCode LIKE concat('%', #{deviceTypeCode}, '%')
+            </if>
+        </where>
     </select>
-    <select id="getAllDeviceType" resultType="String">
+    <select id="getAllDeviceTypeName" resultType="String">
         SELECT deviceTypeName
         FROM DeviceType
     </select>
 
-    <select id="getDeviceTypeByDeviceTypeName" resultType="com.it.iotplatform.model.DeviceType">
+    <select id="getAllDeviceType" resultType="com.it.iotplatform.model.DeviceType">
         select * from DeviceType
-        <where>
-            <if test="deviceTypeName != null and deviceTypeName != ''">
-             AND deviceTypeName LIKE concat('%', #{deviceTypeName}, '%')
-            </if>
-        </where>
     </select>
 </mapper>

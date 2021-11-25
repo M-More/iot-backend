@@ -18,8 +18,8 @@ public class DeviceTypeController {
     }
 
     @GetMapping("/getAll")
-    private List<String> getAllDeviceType(){
-        return deviceTypeService.getAllDeviceType();
+    private AppResponse<DeviceType> getAllDeviceType(DeviceType deviceType){
+        return deviceTypeService.getAllDeviceType(deviceType);
     }
 
     @PostMapping(value ="/add")
@@ -38,12 +38,12 @@ public class DeviceTypeController {
     }
 
     @GetMapping(value ="/getBy")
-    public DeviceType getDeviceType(String deviceTypeCode){
-        return deviceTypeService.getDeviceType(deviceTypeCode);
+    public List<DeviceType> getDeviceType(DeviceType deviceType){
+        return deviceTypeService.getDeviceTypeBy(deviceType);
     }
 
-    @GetMapping(value ="/getByName")
-    public List<DeviceType> getDeviceTypeByName(String deviceTypeName){
-        return deviceTypeService.getDeviceTypeByDeviceTypeName(deviceTypeName);
+    @GetMapping(value ="/getAllName")
+    public List<String> getDeviceTypeBy(){
+        return deviceTypeService.getAllDeviceTypeName();
     }
 }
