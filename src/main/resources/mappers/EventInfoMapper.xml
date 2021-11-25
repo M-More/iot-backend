@@ -15,7 +15,8 @@
         UPDATE eventInfo
         SET
             eventInfoStatus=#{eventInfoStatus},
-            updateUser=#{updateUser}
+            updateUser=#{updateUser},
+            opinion=#{opinion}
         where eventInfoId=#{eventInfoId}
     </update>
     <select id="getEventStat" resultType="com.it.iotplatform.model.EventStat">
