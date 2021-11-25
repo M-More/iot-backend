@@ -15,12 +15,10 @@
     </select>
 
     <insert id="addEventLog" parameterType="com.it.iotplatform.model.EventLog">
-        INSERT INTO eventLog(eventInfoId, date, processStatus, staff, action)
+        INSERT INTO eventLog(eventInfoId, processStatus, staff, action)
             VALUE (#{eventInfoId},
-            #{date},
             #{processStatus},
             #{staff},
-            #{action},
-            );
+            #{action});
     </insert>
 </mapper>
