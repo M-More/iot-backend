@@ -34,5 +34,7 @@ public interface DeviceInfoService {
      */
     List<DeviceInfo> getDeviceInfo(String deviceNumber);
 
+    List<DeviceInfo> getDeviceInfoByDeviceTypeName(String deviceTypeName);
+
     AppResponse<DeviceInfo> getAllDeviceInfo(DeviceInfo deviceInfo);
 }

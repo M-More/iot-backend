@@ -69,6 +69,11 @@ public class DeviceTypeServiceImpl implements DeviceTypeService {
     public List<String> getAllDeviceType() {
         return deviceTypeMapper.getAllDeviceType();
     }
+
+    @Override
+    public List<DeviceType> getDeviceTypeByDeviceTypeName(String deviceTypeName) {
+        return deviceTypeMapper.getDeviceTypeByDeviceTypeName(deviceTypeName);
+    }
 }
 
 

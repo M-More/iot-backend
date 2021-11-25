@@ -42,4 +42,9 @@
         SELECT deviceTypeName
         FROM DeviceType
     </select>
+
+    <select id="getDeviceTypeByDeviceTypeName" resultType="com.it.iotplatform.model.DeviceType">
+        select * from DeviceType
+        where deviceTypeName like concat('%', #{deviceTypeName}, '%')
+    </select>
 </mapper>

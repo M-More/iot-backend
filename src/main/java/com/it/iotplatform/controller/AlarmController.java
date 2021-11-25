@@ -42,7 +42,7 @@ public class AlarmController {
         return alarmService.deleteAlarm(alarm);
     }
     @GetMapping("/getBy")
-    private List<String> getAlarmNameByDeviceTypeName(Alarm alarm){
+    private List<String> getAlarmNameByDeviceTypeName(Alarm alarm) {
         return alarmService.getAlarmByDevice(alarm);
     }
 }

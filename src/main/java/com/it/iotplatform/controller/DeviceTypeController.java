@@ -41,4 +41,9 @@ public class DeviceTypeController {
     public DeviceType getDeviceType(String deviceTypeCode){
         return deviceTypeService.getDeviceType(deviceTypeCode);
     }
+
+    @GetMapping(value ="/getByName")
+    public List<DeviceType> getDeviceTypeByName(String deviceTypeName){
+        return deviceTypeService.getDeviceTypeByDeviceTypeName(deviceTypeName);
+    }
 }

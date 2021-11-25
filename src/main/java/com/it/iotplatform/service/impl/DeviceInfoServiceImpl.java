@@ -66,6 +66,11 @@ public class DeviceInfoServiceImpl implements DeviceInfoService {
     }
 
     @Override
+    public List<DeviceInfo> getDeviceInfoByDeviceTypeName(String deviceTypeName) {
+        return deviceInfoMapper.getDeviceInfoByDeviceTypeName(deviceTypeName);
+    }
+
+    @Override
     public AppResponse<DeviceInfo> getAllDeviceInfo(DeviceInfo deviceInfo) {
         PageHelper.startPage(deviceInfo.getPage(), deviceInfo.getPageSize());
         List<DeviceInfo> deviceInfoList = deviceInfoMapper.getAllDeviceInfo();
