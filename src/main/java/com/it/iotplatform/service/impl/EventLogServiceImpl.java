@@ -26,7 +26,7 @@ public class EventLogServiceImpl implements EventLogService {
     }
 
     @Override
-    public EventLog getEventLogById(String eventInfoId) {
+    public List<EventLog> getEventLogById(String eventInfoId) {
         return eventLogMapper.getEventLogById(eventInfoId);
     }
 

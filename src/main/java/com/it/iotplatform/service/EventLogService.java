@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface EventLogService {
     public List<EventLog> getAllEventLog();
-    public EventLog getEventLogById(String eventInfoId);
+    public List<EventLog> getEventLogById(String eventInfoId);
     public AppResponse<EventLog> addEventLog(EventLog eventLog);
 }

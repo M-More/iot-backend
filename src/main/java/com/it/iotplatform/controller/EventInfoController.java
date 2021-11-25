@@ -38,7 +38,7 @@ public class EventInfoController {
     }
 
     @GetMapping(value ="/getLog")
-    public EventLog getEventLog(String eventInfoId) {
+    public List<EventLog> getEventLog(String eventInfoId) {
         return eventLogService.getEventLogById(eventInfoId);
     }
 
