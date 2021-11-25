@@ -37,4 +37,10 @@ public interface DeviceInfoService {
     List<DeviceInfo> getDeviceInfoByDeviceTypeName(String deviceTypeName);
 
     AppResponse<DeviceInfo> getAllDeviceInfo(DeviceInfo deviceInfo);
+
+    List<DeviceInfo> getAllDeviceInfoNoPage();
+
+    AppResponse<DeviceInfo> updateDeviceStatusWhileEventOccur(DeviceInfo deviceInfo);
+
+    List<DeviceInfo> getDeviceInfoByDeviceStatus(String deviceStatus);
 }

@@ -27,6 +27,7 @@
          longitude,
          latitude,
          installAddress,
+         deviceStatus,
          createUser,
          updateUser,
          state
@@ -41,6 +42,7 @@
              #{longitude},
              #{latitude},
              #{installAddress},
+             "正常",
              #{createUser},
              #{createUser},
              1
@@ -58,8 +60,14 @@
             longitude=#{longitude},
             latitude=#{latitude},
             installAddress=#{installAddress},
+            deviceStatus=#{deviceStatus},
             updateUser=#{updateUser}
             where deviceNumber=#{deviceNumber}
+    </update>
+    <update id="updateDeviceStatusWhileEventOccur" parameterType="com.it.iotplatform.model.DeviceInfo">
+        UPDATE DeviceInfo
+        SET deviceStatus = #{deviceStatus}
+        WHERE deviceNumber = #{deviceNumber}
     </update>
     <delete id="deleteDeviceInfoById">
         DELETE from DeviceInfo where deviceNumber=#{deviceNumber}
@@ -86,5 +94,11 @@
     <select id="getDeviceInfoByDeviceTypeName" resultType="com.it.iotplatform.model.DeviceInfo">
         select * from deviceInfo
         WHERE deviceTypeName like concat('%', #{deviceTypeName}, '%')
+    </select>
+
+    <select id="getDeviceInfoByDeviceStatus" parameterType="string" resultType="com.it.iotplatform.model.DeviceInfo">
+        SELECT *
+        FROM deviceInfo
+        WHERE deviceStatus = #{deviceStatus}
     </select>
 </mapper>

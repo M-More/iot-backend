@@ -46,4 +46,19 @@ public class DeviceInfoController {
     public List<DeviceInfo> getDeviceInfoByName(String deviceTypeName){
         return deviceInfoService.getDeviceInfoByDeviceTypeName(deviceTypeName);
     }
+
+    @GetMapping(value = "/nopageget")
+    public List<DeviceInfo> noPageGetAll(){
+        return deviceInfoService.getAllDeviceInfoNoPage();
+    }
+
+    @GetMapping(value = "getByStatus")
+    public List<DeviceInfo> getDeviceInfoByDeviceStatus(String deviceStatus){
+        return deviceInfoService.getDeviceInfoByDeviceStatus(deviceStatus);
+    }
+
+    @PostMapping(value ="/updatestatus")
+    public AppResponse<DeviceInfo> updateDeviceStatusWhileEventOccur(DeviceInfo deviceInfo){
+        return deviceInfoService.updateDeviceStatusWhileEventOccur(deviceInfo);
+    }
 }
