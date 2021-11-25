@@ -35,6 +35,8 @@ public interface DeviceTypeService {
     DeviceType getDeviceType(String deviceTypeCode);
 
     List<String> getAllDeviceType();
+
+    List<DeviceType> getDeviceTypeByDeviceTypeName(String deviceTypeName);
 }
 
 

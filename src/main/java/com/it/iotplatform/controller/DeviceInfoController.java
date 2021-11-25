@@ -41,4 +41,9 @@ public class DeviceInfoController {
     public AppResponse<DeviceInfo> getAllDeviceInfo(DeviceInfo deviceInfo){
         return deviceInfoService.getAllDeviceInfo(deviceInfo);
     }
+
+    @GetMapping(value ="/getByName")
+    public List<DeviceInfo> getDeviceInfoByName(String deviceTypeName){
+        return deviceInfoService.getDeviceInfoByDeviceTypeName(deviceTypeName);
+    }
 }

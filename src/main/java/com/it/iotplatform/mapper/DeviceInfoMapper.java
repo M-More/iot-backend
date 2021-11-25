@@ -12,4 +12,5 @@ public interface DeviceInfoMapper {
     Integer deleteDeviceInfoById(String deviceNumber);
     List<DeviceInfo> getDeviceInfo(String deviceNumber);
     List<DeviceInfo> getAllDeviceInfo();
+    List<DeviceInfo> getDeviceInfoByDeviceTypeName(String deviceTypeName);
 }

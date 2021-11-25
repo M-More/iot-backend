@@ -82,4 +82,9 @@
     <select id="getAllDeviceInfo" resultType="com.it.iotplatform.model.DeviceInfo">
         select * from deviceInfo
     </select>
+
+    <select id="getDeviceInfoByDeviceTypeName" resultType="com.it.iotplatform.model.DeviceInfo">
+        select * from deviceInfo
+        WHERE deviceTypeName like concat('%', #{deviceTypeName}, '%')
+    </select>
 </mapper>
