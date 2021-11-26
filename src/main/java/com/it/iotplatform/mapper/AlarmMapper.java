@@ -14,4 +14,3 @@ public interface AlarmMapper {
     Integer deleteAlarm(Alarm alarm);
     List<String> getAlarmNameByDeviceType(Alarm alarm);
 }
-

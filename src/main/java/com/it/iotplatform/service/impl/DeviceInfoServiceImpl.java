@@ -29,6 +29,7 @@ public class DeviceInfoServiceImpl implements DeviceInfoService {
             deviceInfoMapper.addDeviceInfo(deviceInfo);
             return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.SUCCESS);        }
         catch (Exception e) {
+            e.printStackTrace();
             return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.FAILURE);        }
     }
 
@@ -57,13 +58,17 @@ public class DeviceInfoServiceImpl implements DeviceInfoService {
             }
         }
         catch (Exception e) {
+            e.printStackTrace();
             return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.FAILURE);
         }
     }
 
     @Override
-    public List<DeviceInfo> getDeviceInfo(DeviceInfo deviceInfo) {
-        return deviceInfoMapper.getDeviceInfo(deviceInfo);
+    public AppResponse<DeviceInfo> getDeviceInfo(DeviceInfo deviceInfo) {
+        PageHelper.startPage(deviceInfo.getPage(), deviceInfo.getPageSize());
+        List<DeviceInfo> deviceInfoList = deviceInfoMapper.getDeviceInfo(deviceInfo);
+        PageInfo<DeviceInfo> pageInfo = new PageInfo<>(deviceInfoList);
+        return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.SUCCESS, pageInfo);
     }
 
     @Override

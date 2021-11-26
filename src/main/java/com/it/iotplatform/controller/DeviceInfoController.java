@@ -34,7 +34,7 @@ public class DeviceInfoController {
     }
 
     @GetMapping(value ="/getBy")
-    public List<DeviceInfo> getDeviceInfo(DeviceInfo deviceInfo){
+    public AppResponse<DeviceInfo> getDeviceInfoByCondition(DeviceInfo deviceInfo){
         return deviceInfoService.getDeviceInfo(deviceInfo);
     }
 

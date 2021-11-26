@@ -30,7 +30,8 @@
          deviceStatus,
          createUser,
          updateUser,
-         state
+         state,
+         deviceName
         )
         VALUES
             (#{deviceSort},
@@ -38,14 +39,15 @@
              #{deviceTypeName},
              #{deviceModel},
              #{deviceNumber},
-             #{deviceDate},
+             #{installDate},
              #{longitude},
              #{latitude},
              #{installAddress},
              "正常",
              #{createUser},
              #{createUser},
-             1
+             1,
+             concat(#{deviceTypeName},#{deviceNumber})
              );
     </insert>
     <update id="updateDeviceInfo" parameterType="com.it.iotplatform.model.DeviceInfo">
@@ -56,12 +58,13 @@
             deviceTypeName=#{deviceTypeName},
             deviceModel=#{deviceModel},
             deviceNumber=#{deviceNumber},
-            installDate=#{deviceDate},
+            installDate=#{installDate},
             longitude=#{longitude},
             latitude=#{latitude},
             installAddress=#{installAddress},
             deviceStatus=#{deviceStatus},
-            updateUser=#{updateUser}
+            updateUser=#{updateUser},
+            deviceName=concat(#{deviceTypeName},#{deviceNumber})
             where deviceNumber=#{deviceNumber}
     </update>
     <update id="updateDeviceStatusWhileEventOccur" parameterType="com.it.iotplatform.model.DeviceInfo">
@@ -81,8 +84,8 @@
         <if test="deviceBrand != null">
             and deviceBrand like concat('%', #{deviceBrand}, '%')
         </if>
-        <if test="deviceNumber != null">
-            and deviceNumber like concat('%', #{deviceNumber}, '%')
+        <if test="deviceName != null">
+            and deviceName like concat('%', #{deviceName}, '%')
         </if>
         order by #{updateTime} DESC, #{createTime} DESC
     </select>
