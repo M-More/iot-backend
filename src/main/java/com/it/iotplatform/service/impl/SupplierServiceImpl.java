@@ -35,8 +35,11 @@ public class SupplierServiceImpl implements SupplierService {
     }
 
     @Override
-    public List<Supplier> getSupplierByNameOrCode(Supplier supplier) {
-        return supplierMapper.getSupplierByNameOrCode(supplier);
+    public AppResponse<Supplier> getSupplierByNameOrCode(Supplier supplier) {
+        PageHelper.startPage(supplier.getPage(), supplier.getPageSize());
+        List<Supplier> supplierList = supplierMapper.getSupplierByNameOrCode(supplier);
+        PageInfo<Supplier> pageInfo = new PageInfo<>(supplierList);
+        return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.SUCCESS, pageInfo);
     }
 
     @Override
