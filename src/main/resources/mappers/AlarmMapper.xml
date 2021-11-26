@@ -26,7 +26,7 @@
         where deviceTypeName = #{deviceTypeName}
     </select>
     <insert id="addAlarm" parameterType="com.it.iotplatform.model.Alarm">
-        insert into alarm(alarmName,alarmCode,alarmLevel,deviceTypeName,status,ruleDescription,createUser,updateUser,state)
+        insert into alarm(alarmName,alarmCode,alarmLevel,deviceTypeName,alarmStatus,ruleDescription,createUser,updateUser,state)
         value (
             #{alarmName},
             #{alarmCode},
