@@ -13,12 +13,12 @@
         from supplier
     </select>
 
-    <select id="getSupplierByNameOrCode" resultType="com.it.iotplatform.model.Supplier">
+    <select id="getSupplierByNameOrCode" parameterType="com.it.iotplatform.model.Supplier" resultType="com.it.iotplatform.model.Supplier">
         select *
         from supplier
         <where>
-            <if test="supplierName != null and supplierName != ''">supplierName like CONCAT(#{supplierName},'%')</if>
-            <if test="supplierCode != null and supplierCode != ''">or supplierCode like CONCAT(#{supplierCode},'%')</if>
+            <if test="supplierName != null and supplierName != ''">supplierName like CONCAT('%',#{supplierName},'%')</if>
+            <if test="supplierCode != null and supplierCode != ''">or supplierCode like CONCAT('%',#{supplierCode},'%')</if>
         </where>
     </select>
 

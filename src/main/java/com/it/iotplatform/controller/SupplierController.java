@@ -27,7 +27,7 @@ public class SupplierController {
         return supplierService.getAllSupplier(supplier);
     }
     @GetMapping("/getBy")
-    private List<Supplier> getSupplierByName(Supplier supplier){
+    private AppResponse<Supplier> getSupplierByName(Supplier supplier){
         return supplierService.getSupplierByNameOrCode(supplier);
     }
     @PostMapping("/add")
