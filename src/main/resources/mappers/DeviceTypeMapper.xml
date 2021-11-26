@@ -41,7 +41,7 @@
                 deviceTypeName LIKE concat('%', #{deviceTypeName}, '%')
             </if>
             <if test="deviceTypeCode != null and deviceTypeCode != ''">
-                OR deviceTypeCode LIKE concat('%', #{deviceTypeCode}, '%')
+                AND deviceTypeCode LIKE concat('%', #{deviceTypeCode}, '%')
             </if>
         </where>
     </select>

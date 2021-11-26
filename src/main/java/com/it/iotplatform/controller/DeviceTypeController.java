@@ -38,12 +38,17 @@ public class DeviceTypeController {
     }
 
     @GetMapping(value ="/getBy")
-    public List<DeviceType> getDeviceType(DeviceType deviceType){
+    public List<DeviceType> getDeviceTypeBy(DeviceType deviceType){
         return deviceTypeService.getDeviceTypeBy(deviceType);
     }
 
     @GetMapping(value ="/getAllName")
-    public List<String> getDeviceTypeBy(){
+    public List<String> getDeviceType(){
         return deviceTypeService.getAllDeviceTypeName();
+    }
+
+    @GetMapping(value="/getPageBy")
+    public AppResponse<DeviceType> getDeviceTypePageBy(DeviceType deviceType){
+        return deviceTypeService.getAllDeviceTypePageBy(deviceType);
     }
 }
