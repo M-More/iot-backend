@@ -28,12 +28,8 @@ public interface DeviceInfoService {
      */
     AppResponse<DeviceInfo> updateDeviceInfo(DeviceInfo deviceInfo);
 
-    /**
-     * 查询设备信息
-     * @param deviceNumber 所查询设备信息的id.
-     * @return 返回相应的客户端响应JSON格式数据.
-     */
-    List<DeviceInfo> getDeviceInfo(DeviceInfo deviceInfo);
+
+    AppResponse<DeviceInfo> getDeviceInfo(DeviceInfo deviceInfo);
 
     List<DeviceInfo> getDeviceInfoByDeviceTypeName(String deviceTypeName);
 
