@@ -18,7 +18,7 @@
         from supplier
         <where>
             <if test="supplierName != null and supplierName != ''">supplierName like CONCAT('%',#{supplierName},'%')</if>
-            <if test="supplierCode != null and supplierCode != ''">or supplierCode like CONCAT('%',#{supplierCode},'%')</if>
+            <if test="supplierCode != null and supplierCode != ''">and supplierCode like CONCAT('%',#{supplierCode},'%')</if>
         </where>
     </select>
 
