@@ -2,6 +2,7 @@ package com.it.iotplatform.controller;
 
 import com.it.iotplatform.model.AppResponse;
 import com.it.iotplatform.model.DeviceInfo;
+import com.it.iotplatform.model.DeviceInitialization;
 import com.it.iotplatform.service.DeviceInfoService;
 import org.springframework.web.bind.annotation.*;
 
@@ -65,5 +66,10 @@ public class DeviceInfoController {
     @GetMapping(value = "/getByNumber")
     public List<DeviceInfo> getDeviceInfoByDeviceNumber(String deviceNumber){
         return deviceInfoService.getDeviceInfoByDeviceNumber(deviceNumber);
+    }
+
+    @GetMapping(value = "/deviceInitialize")
+    public DeviceInitialization getDataAboutInitialization(){
+        return deviceInfoService.getDataAboutInitialization();
     }
 }

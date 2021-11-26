@@ -107,4 +107,27 @@
         FROM deviceInfo
         WHERE deviceNumber = #{deviceNumber}
     </select>
+
+    <select id="getDataAboutInitialization" resultType="com.it.iotplatform.model.DeviceInitialization">
+        SELECT
+            COUNT(case when true then 1 end) AS deviceTotal,
+            COUNT(DISTINCT deviceTypeName) AS deviceTypeTotal,
+            COUNT(CASE WHEN deviceStatus = '正常' THEN 1 END) AS deviceNormalTotal,
+            COUNT(CASE WHEN deviceStatus = '异常' THEN 1 END) AS deviceWarningTotal,
+            COUNT(CASE WHEN deviceTypeName = '智能路灯' THEN 1 END) AS ludeng,
+            COUNT(CASE WHEN deviceTypeName = '智能路灯' AND deviceStatus = '正常' THEN 1 END) AS ludengN,
+            COUNT(CASE WHEN deviceTypeName = '智能燃气' THEN 1 END) AS ranqi,
+            COUNT(CASE WHEN deviceTypeName = '智能燃气' AND deviceStatus = '正常' THEN 1 END) AS ranqiN,
+            COUNT(CASE WHEN deviceTypeName = '智能井盖' THEN 1 END) AS jinggai,
+            COUNT(CASE WHEN deviceTypeName = '智能井盖' AND deviceStatus = '正常' THEN 1 END) AS jinggaiN,
+            COUNT(CASE WHEN deviceTypeName = '智能电气' THEN 1 END) AS dianqi,
+            COUNT(CASE WHEN deviceTypeName = '智能电气' AND deviceStatus = '正常' THEN 1 END) AS dianqiN,
+            COUNT(CASE WHEN deviceTypeName = '智能消防栓' THEN 1 END) AS xiaofangshuan,
+            COUNT(CASE WHEN deviceTypeName = '智能消防栓' AND deviceStatus = '正常' THEN 1 END) AS xiaofangshuanN,
+            COUNT(CASE WHEN deviceTypeName = '智能烟感' THEN 1 END) AS yangan,
+            COUNT(CASE WHEN deviceTypeName = '智能烟感' AND deviceStatus = '正常' THEN 1 END) AS yanganN,
+            COUNT(CASE WHEN deviceTypeName = '智能光伏' THEN 1 END) AS guangfu,
+            COUNT(CASE WHEN deviceTypeName = '智能光伏' AND deviceStatus = '正常' THEN 1 END) AS guangfuN
+        FROM deviceInfo;
+    </select>
 </mapper>

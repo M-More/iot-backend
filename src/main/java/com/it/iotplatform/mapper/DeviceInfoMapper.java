@@ -1,6 +1,7 @@
 package com.it.iotplatform.mapper;
 
 import com.it.iotplatform.model.DeviceInfo;
+import com.it.iotplatform.model.DeviceInitialization;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -16,4 +17,5 @@ public interface DeviceInfoMapper {
     Integer updateDeviceStatusWhileEventOccur(DeviceInfo deviceInfo);
     List<DeviceInfo> getDeviceInfoByDeviceStatus(String deviceStatus);
     List<DeviceInfo> getDeviceInfoByDeviceNumber(String deviceNumber);
+    DeviceInitialization getDataAboutInitialization();
 }

@@ -15,4 +15,16 @@ public class DeviceInitialization {
     private int deviceTypeTotal;
     private int deviceNormalTotal;
     private int deviceWarningTotal;
+    private int ludeng;
+    private int ludengN;
+    private int ranqi;
+    private int ranqiN;
+    private int jinggai;
+    private int jinggaiN;
+    private int xiaofangshuan;
+    private int xiaofangshuanN;
+    private int yangan;
+    private int yanganN;
+    private int guangfu;
+    private int guangfuN;
 }
