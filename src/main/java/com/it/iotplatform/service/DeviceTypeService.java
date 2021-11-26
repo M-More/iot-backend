@@ -17,6 +17,8 @@ public interface DeviceTypeService {
     AppResponse<DeviceType> getAllDeviceType(DeviceType deviceType);
 
     List<DeviceType> getDeviceTypeBy(DeviceType deviceType);
+
+    AppResponse<DeviceType> getAllDeviceTypePageBy(DeviceType deviceType);
 }
 
 
