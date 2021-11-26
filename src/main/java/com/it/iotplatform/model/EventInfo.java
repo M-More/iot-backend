@@ -9,7 +9,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 public class EventInfo extends BaseModel{
-    private int eventInfoId;
+    private String eventInfoId;
     private String eventName;
     private String eventInfoStatus;
     private String eventInfoResource;

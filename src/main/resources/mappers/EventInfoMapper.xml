@@ -12,7 +12,7 @@
                 #{eventInfoOccurenceTime}, #{eventInfoDescription}, #{eventLevel},
                 #{deviceNumber}, #{deviceTypeName}, #{deviceStatus}, #{addressDescription},
                 #{installDate}, #{createUser}, #{updateUser}, #{state});
-        <selectKey keyProperty="eventInfoId" resultType="java.lang.Integer">
+        <selectKey keyProperty="eventInfoId" resultType="java.lang.String">
             select LAST_INSERT_ID() as id
         </selectKey>
     </insert>

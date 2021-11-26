@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class EventConfig extends BaseModel{
-    private int eventConfigId;
+    private String eventConfigId;
     private String eventName;
     private String notificationDescription;
     private String eventLevel;
