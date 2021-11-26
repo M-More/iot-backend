@@ -22,11 +22,11 @@ public class AlarmController {
     }
 
     @GetMapping("/getAll")
-    private AppResponse<Alarm> getAllSupplier(Alarm alarm){
+    private AppResponse<Alarm> getAllAlarm(Alarm alarm){
         return alarmService.getAllAlarm(alarm);
     }
     @GetMapping("/getByCondition")
-    private List<Alarm> getAlarmByCondition(Alarm alarm){
+    private AppResponse<Alarm> getAlarmByCondition(Alarm alarm){
         return alarmService.getAlarmByCondition(alarm);
     }
     @PostMapping("/add")

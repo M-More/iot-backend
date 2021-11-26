@@ -10,10 +10,15 @@
     <select id="getAlarmByCondition" resultType="com.it.iotplatform.model.Alarm">
         select *
         from alarm
-        where (alarmLevel = #{alarmLevel}
-            and alarmName like CONCAT(#{alarmName},'%'))
-        or (alarmLevel = #{alarmLevel}
-            and alarmCode like CONCAT(#{alarmCode},'%'));
+        <where>
+            alarmLevel = #{alarmLevel}
+            <if test="alarmName != null and alarmName != ''">
+                and alarmName like CONCAT(#{alarmName},'%')
+            </if>
+            <if test="alarmCode != null and alarmCode != ''">
+                and alarmCode like CONCAT(#{alarmCode},'%')
+            </if>
+        </where>
     </select>
     <select id="getAlarmNameByDeviceType" parameterType="com.it.iotplatform.model.Alarm" resultType="string">
         select alarmName

@@ -30,8 +30,11 @@ public class AlarmServiceImpl implements AlarmService {
     }
 
     @Override
-    public List<Alarm> getAlarmByCondition(Alarm alarm) {
-        return alarmMapper.getAlarmByCondition(alarm);
+    public AppResponse<Alarm> getAlarmByCondition(Alarm alarm) {
+        PageHelper.startPage(alarm.getPage(),alarm.getPageSize());
+        List<Alarm> alarmList = alarmMapper.getAlarmByCondition(alarm);
+        PageInfo<Alarm> pageInfo = new PageInfo<>(alarmList);
+        return AppResponse.AppResponseBuilder.build(AppResponse.CodeEnum.SUCCESS,pageInfo);
     }
 
     @Override
