@@ -42,4 +42,8 @@ public class SupplierController {
     private AppResponse<Supplier> deleteSupplier(Supplier supplier){
         return supplierService.deleteSupplier(supplier);
     }
+    @GetMapping("/getAllName")
+    private List<String> getAllSupplierName(){
+        return supplierService.getAllSupplierName();
+    }
 }

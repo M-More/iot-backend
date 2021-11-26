@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface AlarmService {
     AppResponse<Alarm> getAllAlarm(Alarm alarm);
-    List<Alarm> getAlarmByCondition(Alarm alarm);
+    AppResponse<Alarm> getAlarmByCondition(Alarm alarm);
     AppResponse<Alarm> addAlarm(Alarm alarm);
     AppResponse<Alarm> updateAlarm(Alarm alarm);
     AppResponse<Alarm> deleteAlarm(Alarm alarm);
