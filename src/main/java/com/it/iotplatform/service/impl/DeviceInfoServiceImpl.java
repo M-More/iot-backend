@@ -6,6 +6,7 @@ import com.it.iotplatform.mapper.DeviceInfoMapper;
 import com.it.iotplatform.model.Alarm;
 import com.it.iotplatform.model.AppResponse;
 import com.it.iotplatform.model.DeviceInfo;
+import com.it.iotplatform.model.DeviceInitialization;
 import com.it.iotplatform.service.DeviceInfoService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -102,6 +103,11 @@ public class DeviceInfoServiceImpl implements DeviceInfoService {
     @Override
     public List<DeviceInfo> getDeviceInfoByDeviceNumber(String deviceNumber) {
         return deviceInfoMapper.getDeviceInfoByDeviceNumber(deviceNumber);
+    }
+
+    @Override
+    public DeviceInitialization getDataAboutInitialization() {
+        return deviceInfoMapper.getDataAboutInitialization();
     }
 
 

@@ -16,4 +16,5 @@ public class DeviceInfo extends BaseModel{
     @NonNull private String latitude;
     private String deviceStatus;
     private String installAddress;
+    private String deviceName;
 }

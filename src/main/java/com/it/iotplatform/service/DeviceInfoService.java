@@ -2,6 +2,7 @@ package com.it.iotplatform.service;
 
 import com.it.iotplatform.model.AppResponse;
 import com.it.iotplatform.model.DeviceInfo;
+import com.it.iotplatform.model.DeviceInitialization;
 
 import java.util.List;
 
@@ -45,4 +46,6 @@ public interface DeviceInfoService {
     List<DeviceInfo> getDeviceInfoByDeviceStatus(String deviceStatus);
 
     List<DeviceInfo> getDeviceInfoByDeviceNumber(String deviceNumber);
+
+    DeviceInitialization getDataAboutInitialization();
 }
