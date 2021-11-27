@@ -23,6 +23,7 @@
             <if test="eventInfoId != null and eventInfoId != ''">eventInfoId LIKE concat('%', #{eventInfoId}, '%')</if>
             <if test="eventName != null and eventName != ''">AND eventName LIKE concat('%', #{eventName}, '%')</if>
         </where>
+        order by #{updateTime} DESC, #{createTime} DESC
     </select>
     <update id="updateEventInfo" parameterType="com.it.iotplatform.model.EventInfo">
         UPDATE eventInfo

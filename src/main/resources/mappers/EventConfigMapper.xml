@@ -10,6 +10,7 @@
             <if test="eventLevel != null and eventLevel != ''">eventLevel=#{eventLevel}</if>
             <if test="eventName != null and eventName != ''">AND eventName LIKE concat('%', #{eventName}, '%')</if>
         </where>
+        order by #{updateTime} DESC, #{createTime} DESC
     </select>
     <select id="getEventConfigById" resultType="com.it.iotplatform.model.EventConfig">
         select *
