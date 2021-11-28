@@ -21,6 +21,8 @@ public class DeviceInitialization {
     private int ranqiN;
     private int jinggai;
     private int jinggaiN;
+    private int dianqi;
+    private int dianqiN;
     private int xiaofangshuan;
     private int xiaofangshuanN;
     private int yangan;
