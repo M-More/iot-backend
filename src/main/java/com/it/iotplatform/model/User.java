@@ -5,6 +5,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+  * @version :  1.0
+  * @author : caoqingyu
+  * @className : User
+  * @packageName : model
+  * @description : 用户类
+  * @date : 2021/11/29 14:38
+*/
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
