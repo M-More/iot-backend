@@ -8,6 +8,7 @@
         INSERT INTO DeviceType
         (deviceTypeCode,
          deviceTypeName,
+         deviceNote,
          createUser,
          updateUser,
          state
@@ -15,6 +16,7 @@
         VALUES
             (#{deviceTypeCode},
              #{deviceTypeName},
+             #{deviceNote},
              #{createUser},
              #{createUser},
              1

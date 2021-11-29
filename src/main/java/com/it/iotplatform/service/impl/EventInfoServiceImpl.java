@@ -40,6 +40,9 @@ public class EventInfoServiceImpl implements EventInfoService {
     @Override
     public AppResponse<EventInfo> updateEventInfo(EventInfo eventInfo) {
         try {
+            /**
+             * 如果传入状态参数为“已处理”，表示正在进行事件处理操作。需将设备状态改为正常
+             */
             if (eventInfo.getEventInfoStatus().equals("已处理")){
                 eventInfo.setDeviceStatus("正常");
             }
@@ -49,9 +52,15 @@ public class EventInfoServiceImpl implements EventInfoService {
             }
             else {
                 String action;
+                /**
+                 * 如果传入状态参数为“处理中”，表示正在进行事件接单操作。操作为“事件接单”
+                 */
                 if (eventInfo.getEventInfoStatus().equals("处理中")){
                     action = "事件接单";
                 }
+                /**
+                 * 如果传入状态参数为“已处理”，表示正在进行事件处理操作。操作为“事件处理”
+                 */
                 else {
                     action = "事件处理";
                     DeviceInfo deviceInfo = new DeviceInfo();
@@ -59,6 +68,9 @@ public class EventInfoServiceImpl implements EventInfoService {
                     deviceInfo.setDeviceStatus("正常");
                     deviceInfoMapper.updateDeviceStatusWhileEventOccur(deviceInfo);
                 }
+                /**
+                 * 日志生成
+                 */
                 EventLog eventLog = new EventLog
                         (eventInfo.getEventInfoId(), null, eventInfo.getEventInfoStatus(), eventInfo.getUpdateUser(), action);
                 eventLogMapper.addEventLog(eventLog);

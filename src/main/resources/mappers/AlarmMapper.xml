@@ -13,10 +13,10 @@
         <where>
             alarmLevel = #{alarmLevel}
             <if test="alarmName != null and alarmName != ''">
-                and alarmName like CONCAT(#{alarmName},'%')
+                and alarmName like CONCAT('%',#{alarmName},'%')
             </if>
             <if test="alarmCode != null and alarmCode != ''">
-                and alarmCode like CONCAT(#{alarmCode},'%')
+                and alarmCode like CONCAT('%',#{alarmCode},'%')
             </if>
         </where>
     </select>
