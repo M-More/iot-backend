@@ -82,7 +82,7 @@ public class DeviceTypeServiceImpl implements DeviceTypeService {
     }
 
     @Override
-    public AppResponse<DeviceType> getAllDeviceTypePageBy(DeviceType deviceType) {
+    public AppResponse<DeviceType> getDeviceTypePageBy(DeviceType deviceType) {
         PageHelper.startPage(deviceType.getPage(), deviceType.getPageSize());
         List<DeviceType> eventConfigList = deviceTypeMapper.getDeviceTypeBy(deviceType);
         PageInfo<DeviceType> pageInfo = new PageInfo<>(eventConfigList);

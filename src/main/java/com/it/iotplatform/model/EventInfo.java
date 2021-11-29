@@ -4,6 +4,14 @@ import lombok.*;
 
 import java.util.List;
 
+/**
+  * @version :  1.0
+  * @author : caoqingyu
+  * @className : EventInfo
+  * @packageName : model
+  * @description : 事件信息类
+  * @date : 2021/11/29 14:36
+*/
 @AllArgsConstructor
 @Getter
 @Setter

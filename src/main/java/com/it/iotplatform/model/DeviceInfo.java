@@ -1,6 +1,14 @@
 package com.it.iotplatform.model;
 import lombok.*;
 
+/**
+  * @version :  1.0
+  * @author : caoqingyu
+  * @className : DeviceInfo
+  * @packageName : model
+  * @description : 设备信息类
+  * @date : 2021/11/29 14:34
+*/
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter

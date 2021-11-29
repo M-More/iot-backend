@@ -64,7 +64,7 @@ public class DeviceInfoServiceImpl implements DeviceInfoService {
     }
 
     @Override
-    public AppResponse<DeviceInfo> getDeviceInfo(DeviceInfo deviceInfo) {
+    public AppResponse<DeviceInfo> getDeviceInfoByCondition(DeviceInfo deviceInfo) {
         PageHelper.startPage(deviceInfo.getPage(), deviceInfo.getPageSize());
         List<DeviceInfo> deviceInfoList = deviceInfoMapper.getDeviceInfo(deviceInfo);
         PageInfo<DeviceInfo> pageInfo = new PageInfo<>(deviceInfoList);
